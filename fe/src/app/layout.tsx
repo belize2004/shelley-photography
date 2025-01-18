@@ -22,13 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${mont.className} antialiased bg-[#e1dcd8] flex h-screen`}
+        className={`${mont.className} antialiased bg-[#e1dcd8] flex h-screen max-h-screen  overflow-hidden`}
       >
         <Providers>
-          <aside className="flex-grow-0 bg-white h-screen">
+          <aside className="flex-grow-0 bg-white h-screen ">
             <Sidebar />
           </aside>
-          <main className="grow">{children}</main>
+          <main className="grow h-screen overflow-y-scroll ">{children}</main>
         </Providers>
       </body>
     </html>

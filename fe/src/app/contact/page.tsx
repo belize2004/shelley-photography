@@ -1,15 +1,12 @@
-import { BlogCard } from "@/components/blog/card";
-import { getBlogPosts } from "@/lib/api/blog";
+import ContactForm from "@/components/contact/form";
 
-export default async function Page() {
-  const data = await getBlogPosts();
+export default function Page() {
   return (
-    <div className="flex flex-col p-8 gap-8">
-      {data.data.map((category) =>
-        category.data.posts.map((image) => (
-          <BlogCard key={image.id} blogPost={image} />
-        ))
-      )}
+    <div className="flex flex-col p-8 gap-4  h-screen">
+      <ContactForm />
+      <h1 className="text-2xl font-bold">Get in touch</h1>
+      <p>850.490.5147</p>
+      <p>shelley@shelleybphotography.com</p>
     </div>
   );
 }
