@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_category_categories",
+  "info": {
+    "displayName": "category",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "posts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blog.blog"
+    }
+  }
+}
