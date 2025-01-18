@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${mont.className} antialiased bg-[#e1dcd8] flex `}>
         <Providers>
-          <aside className="flex-grow-0">
+          <aside className="flex-grow-0 bg-white h-screen">
             <Sidebar />
           </aside>
           <main className="grow">{children}</main>
