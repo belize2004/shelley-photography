@@ -9,7 +9,7 @@ export function Sidebar() {
   const pathname = usePathname();
   console.log(pathname);
   return (
-    <main className="flex flex-col py-8 px-4 bg-white h-full max-w-96 gap-6">
+    <main className="flex flex-col py-8 px-4 bg-white h-full w-96 gap-6">
       <div className="flex flex-col gap-2 items-center justify-center">
         <Image src="/logo.webp" width={300} height={200} alt="Logo" />
         <h1 className="text-sm font-semibold text-balance mx-auto w-fit text-center text-black">

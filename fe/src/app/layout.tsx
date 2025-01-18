@@ -21,7 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${mont.className} antialiased bg-[#e1dcd8] flex `}>
+      <body
+        className={`${mont.className} antialiased bg-[#e1dcd8] flex h-screen`}
+      >
         <Providers>
           <aside className="flex-grow-0 bg-white h-screen">
             <Sidebar />
