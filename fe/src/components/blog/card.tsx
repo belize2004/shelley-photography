@@ -23,7 +23,7 @@ export function BlogCard({
       <h1 className="px-4 text-2xl font-bold">{blogPost.title}</h1>
       <p className="px-4 line-clamp-2 text-zinc-500">{blogPost.desc}</p>
       <Button asChild className="w-fit" variant={"link"}>
-        <Link href={`/blog/${blogPost.id}`}>Read more</Link>
+        <Link href={`/blog/${blogPost.documentId}`}>Read more</Link>
       </Button>
     </div>
   );

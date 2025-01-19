@@ -1,13 +1,10 @@
-"use client";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
-import { usePathname } from "next/navigation";
-import clsx from "clsx";
+
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { SidebarNav } from "./side-bar-item";
 export function Sidebar() {
-  const pathname = usePathname();
-  console.log(pathname);
   return (
     <main className="flex flex-col py-8 px-4 bg-white h-full w-96 gap-6">
       <div className="flex flex-col gap-2 items-center justify-center">
@@ -39,7 +36,6 @@ export function Sidebar() {
           { name: "in the press", href: "/press" },
           { name: "Blog", href: "/blog" },
         ]}
-        currentPath={pathname}
       />
       <Separator className="h-px bg-[#c7c7c7] w-1/2" />
 
@@ -62,35 +58,5 @@ export function Sidebar() {
         className="w-60"
       />
     </main>
-  );
-}
-
-interface SidebarItem {
-  name: string;
-  href: string;
-}
-
-export function SidebarNav({
-  items,
-  currentPath,
-}: Readonly<{
-  items: SidebarItem[];
-  currentPath: string;
-}>) {
-  return (
-    <nav className="flex flex-col gap-1">
-      {items.map((item) => (
-        <a
-          key={item.href}
-          href={item.href}
-          className={clsx(
-            "text-sm text-[#797878]  transition-colors font-bold uppercase",
-            currentPath === item.href ? "text-black" : "hover:text-[#000000]"
-          )}
-        >
-          {item.name}
-        </a>
-      ))}
-    </nav>
   );
 }
