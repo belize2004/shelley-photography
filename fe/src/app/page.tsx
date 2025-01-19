@@ -12,8 +12,8 @@ export default function Home() {
   return (
     <div className="flex flex-wrap p-8">
       {data?.data.map((category) =>
-        category.photos.map((image) => (
-          <div key={image.id} className="mx-2">
+        category.photos?.map((image) => (
+          <div key={image.id} className="m-2">
             <Image
               src={IMAGE_BASE_URL + image.url}
               width={300}
