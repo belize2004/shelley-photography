@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/layout/side-bar";
 import { Providers } from "./providers";
+import { Navbar } from "@/components/layout/navbar";
 
 const mont = Montserrat({
   variable: "--font-montserrat",
@@ -22,13 +23,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${mont.className} antialiased bg-[#e1dcd8] flex h-screen max-h-screen  overflow-hidden`}
+        className={`${mont.className} antialiased bg-[#e1dcd8] flex h-screen max-h-screen  lg:overflow-hidden flex-col lg:flex-row`}
       >
         <Providers>
-          <aside className="flex-grow-0 bg-white h-screen ">
+          <aside className="lg:flex-grow-0 bg-white lg:h-screen ">
             <Sidebar />
+            <Navbar />
           </aside>
-          <main className="grow h-screen overflow-y-scroll ">{children}</main>
+          <main className="grow h-screen lg:overflow-y-scroll ">
+            {children}
+          </main>
         </Providers>
       </body>
     </html>

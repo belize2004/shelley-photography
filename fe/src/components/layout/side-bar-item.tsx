@@ -15,7 +15,7 @@ export function SidebarNav({
   const pathname = usePathname();
   const currentPath = pathname;
   return (
-    <nav className="flex flex-col gap-1">
+    <nav className="flex flex-col gap-3  lg:gap-1 max-sm:w-full px-8 lg:px-0">
       {items.map((item) => (
         <a
           key={item.href}
