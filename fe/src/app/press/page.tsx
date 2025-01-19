@@ -12,7 +12,7 @@ export default function PressPage() {
         on Ono Island.It was published in the Global Luxury Mansion section
       </p>
       <Image
-        src="/67198b763e6a2b15e95f325d_Image 10-23-24 at 6.48 PM.webp"
+        src="/presss.webp"
         width={500}
         height={500}
         alt="In The Press1"

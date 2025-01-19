@@ -17,7 +17,7 @@ export default function Page() {
           .filter((c) => c.name === "real estate")
           .map((category) =>
             category.photos.map((image) => (
-              <div key={image.id} className="mx-2">
+              <div key={image.id} className="m-2">
                 <Image
                   src={IMAGE_BASE_URL + image.url}
                   width={300}
