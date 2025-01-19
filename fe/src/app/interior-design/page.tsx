@@ -1,6 +1,6 @@
 "use client";
 import { BlogCard } from "@/components/blog/card";
-import { getCategories } from "@/lib/api/categories";
+import { getPhotos } from "@/lib/api/categories";
 import { IMAGE_BASE_URL } from "@/lib/const";
 import Image from "next/image";
 import { useQuery } from "react-query";
@@ -8,15 +8,15 @@ import { useQuery } from "react-query";
 export default function Page() {
   const { data } = useQuery({
     queryKey: "categories",
-    queryFn: getCategories,
+    queryFn: getPhotos,
   });
   return (
     <>
       <div className="flex flex-wrap p-8">
         {data?.data
-          .filter((c) => c.data.name === "Interior design")
+          .filter((c) => c.name === "interior design")
           .map((category) =>
-            category.data.gallery.map((image) => (
+            category.photos.map((image) => (
               <div key={image.id} className="mx-2">
                 <Image
                   src={IMAGE_BASE_URL + image.url}
@@ -31,9 +31,9 @@ export default function Page() {
       </div>
       <div className="flex flex-col p-8 gap-8">
         {data?.data
-          .filter((c) => c.data.name === "Interior design")
+          .filter((c) => c.name === "interior design")
           .map((category) =>
-            category.data.posts.map((image) => (
+            category.blogs.map((image) => (
               <BlogCard key={image.id} blogPost={image} />
             ))
           )}

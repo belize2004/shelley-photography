@@ -1,5 +1,5 @@
 "use client";
-import { getCategories } from "@/lib/api/categories";
+import { getPhotos } from "@/lib/api/categories";
 import { IMAGE_BASE_URL } from "@/lib/const";
 import Image from "next/image";
 import { useQuery } from "react-query";
@@ -7,12 +7,12 @@ import { useQuery } from "react-query";
 export default function Home() {
   const { data } = useQuery({
     queryKey: "categories",
-    queryFn: getCategories,
+    queryFn: getPhotos,
   });
   return (
     <div className="flex flex-wrap p-8">
       {data?.data.map((category) =>
-        category.data.gallery.map((image) => (
+        category.photos.map((image) => (
           <div key={image.id} className="mx-2">
             <Image
               src={IMAGE_BASE_URL + image.url}

@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 export function BlogCard({
   blogPost,
 }: {
-  blogPost: Root["data"][0]["data"]["posts"][0];
+  blogPost: Root["data"][0]["blogs"][0];
 }) {
   console.log(blogPost);
   return (

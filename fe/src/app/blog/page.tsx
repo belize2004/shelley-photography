@@ -5,11 +5,9 @@ export default async function Page() {
   const data = await getBlogPosts();
   return (
     <div className="flex flex-col p-8 gap-8">
-      {data.data.map((category) =>
-        category.data.posts.map((image) => (
-          <BlogCard key={image.id} blogPost={image} />
-        ))
-      )}
+      {data.data.map((blog) => (
+        <BlogCard key={blog.id} blogPost={blog} />
+      ))}
     </div>
   );
 }

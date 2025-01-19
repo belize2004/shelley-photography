@@ -1,6 +1,6 @@
 "use client";
 import { BlogCard } from "@/components/blog/card";
-import { getCategories } from "@/lib/api/categories";
+import { getPhotos } from "@/lib/api/categories";
 import { IMAGE_BASE_URL } from "@/lib/const";
 import Image from "next/image";
 import { useQuery } from "react-query";
@@ -8,7 +8,7 @@ import { useQuery } from "react-query";
 export default function Page() {
   const { data } = useQuery({
     queryKey: "categories",
-    queryFn: getCategories,
+    queryFn: getPhotos,
   });
   return (
     <>
