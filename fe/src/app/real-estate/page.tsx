@@ -14,9 +14,9 @@ export default function Page() {
     <>
       <div className="flex flex-wrap p-8">
         {data?.data
-          .filter((c) => c.data.name === "Interior design")
+          .filter((c) => c.name === "real estate")
           .map((category) =>
-            category.data.gallery.map((image) => (
+            category.photos.map((image) => (
               <div key={image.id} className="mx-2">
                 <Image
                   src={IMAGE_BASE_URL + image.url}
@@ -31,11 +31,9 @@ export default function Page() {
       </div>
       <div className="flex flex-col p-8 gap-8">
         {data?.data
-          .filter((c) => c.data.name === "Interior design")
+          .filter((c) => c.name === "real estate")
           .map((category) =>
-            category.data.posts.map((image) => (
-              <BlogCard key={image.id} blogPost={image} />
-            ))
+            category.blogs.map((b) => <BlogCard key={b.id} blogPost={b} />)
           )}
       </div>
     </>

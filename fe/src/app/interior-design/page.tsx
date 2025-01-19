@@ -33,9 +33,7 @@ export default function Page() {
         {data?.data
           .filter((c) => c.name === "interior design")
           .map((category) =>
-            category.blogs.map((image) => (
-              <BlogCard key={image.id} blogPost={image} />
-            ))
+            category.blogs.map((b) => <BlogCard key={b.id} blogPost={b} />)
           )}
       </div>
     </>
