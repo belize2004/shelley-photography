@@ -16,7 +16,7 @@ export default function Page() {
         {data?.data
           .filter((c) => c.name === "micro wedding")
           .map((category) =>
-            category.photos.map((image) => (
+            category.photos?.map((image) => (
               <div key={image.id} className="m-2">
                 <Image
                   src={IMAGE_BASE_URL + image.url}
