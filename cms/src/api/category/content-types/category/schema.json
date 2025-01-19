@@ -12,10 +12,24 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "data": {
-      "type": "component",
-      "repeatable": false,
-      "component": "category.category"
+    "name": {
+      "type": "string"
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "blogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog.blog"
     }
   }
 }
