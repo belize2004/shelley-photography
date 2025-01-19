@@ -18,7 +18,13 @@ export function Navbar() {
     <nav className=" flex items-center py-8 px-4 bg-white w-full lg:hidden gap-6 flex-col">
       <div className="flex flex-row items-center justify-between w-full ">
         <div className="flex flex-col">
-          <Image src="/logo.webp" width={150} height={100} alt="Logo" />
+          <Image
+            src="/logo.webp"
+            width={150}
+            height={100}
+            alt="Logo"
+            priority
+          />
         </div>
         <button className="md:hidden text-black" onClick={toggleMenu}>
           {isOpen ? (
@@ -29,7 +35,7 @@ export function Navbar() {
         </button>
       </div>
       <div className="flex flex-col w-full gap-2">
-        <Image src="/logo.webp" width={400} height={100} alt="Logo" />
+        <Image src="/logo.webp" width={400} height={100} alt="Logo" priority />
         <h1 className="text-sm font-semibold text-center text-black z-10">
           Shelley and Blaine Bressman Photography and Website Design
         </h1>
