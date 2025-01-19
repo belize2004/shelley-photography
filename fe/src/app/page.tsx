@@ -33,6 +33,7 @@ export default function Home() {
             height={300}
             alt="Image"
             className="rounded-xl w-full"
+            priority
           />
         </div>
       ))}
