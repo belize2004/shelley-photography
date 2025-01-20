@@ -10,14 +10,14 @@ export function BlogCard({
 }) {
   console.log(blogPost);
   return (
-    <div className="bg-white flex flex-col rounded-xl gap-4 pb-4">
+    <div className="bg-white flex flex-col rounded-xl gap-4 pb-4 border shadow-md">
       {blogPost.cover && (
         <Image
           src={IMAGE_BASE_URL + blogPost.cover?.url}
-          width={300}
-          height={300}
+          width={1000}
+          height={1000}
           alt="Image"
-          className=" w-full h-60 object-cover rounded-t-xl"
+          className=" w-full h-60 object-cover  rounded-t-xl"
         />
       )}
       <h1 className="px-4 text-2xl font-bold">{blogPost.title}</h1>

@@ -1,6 +1,7 @@
 import { getPhotos } from "@/lib/api/categories";
 import type { Photo } from "@/lib/types";
 import PageClient from "./page.client";
+import { BlogCard } from "@/components/blog/card";
 
 export default async function Home() {
   const data = await getPhotos();
@@ -20,6 +21,13 @@ export default async function Home() {
   return (
     <div className="p-4">
       <PageClient uniquePhotos={uniquePhotos} />
+      <div className="flex flex-col p-8 gap-8">
+        {data?.data
+          // .filter((c) => c.name === "family portrait")
+          .map((category) =>
+            category.blogs.map((b) => <BlogCard key={b.id} blogPost={b} />)
+          )}
+      </div>
     </div>
   );
 }

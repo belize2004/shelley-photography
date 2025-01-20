@@ -18,7 +18,14 @@ export default function Page() {
     500: 1,
   };
   return (
-    <>
+    <div className="pt-8 px-4">
+      <h1 className="text-4xl font-bold w-fit mx-auto text-center">
+        Family Portrait Photography <br /> Let us tell your story
+      </h1>
+      <p className="text-xl text-center my-4">
+        Pensacola, Perdido Key, Orange Beach, Gulf Shores, Fort Morgan and
+        Navarre Includes 2 photographers
+      </p>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="flex w-auto"
@@ -40,6 +47,13 @@ export default function Page() {
             ))
           )}
       </Masonry>
+      <Image
+        src="/ratings.webp"
+        width={800}
+        height={800}
+        alt="Ratings"
+        className="my-8 w-full"
+      />
       <div className="flex flex-col p-8 gap-8">
         {data?.data
           .filter((c) => c.name === "family portrait")
@@ -47,6 +61,6 @@ export default function Page() {
             category.blogs.map((b) => <BlogCard key={b.id} blogPost={b} />)
           )}
       </div>
-    </>
+    </div>
   );
 }
