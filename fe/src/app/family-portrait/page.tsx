@@ -49,8 +49,8 @@ export default function Page() {
       </Masonry>
       <Image
         src="/ratings.webp"
-        width={800}
-        height={800}
+        width={2000}
+        height={2000}
         alt="Ratings"
         className="my-8 w-full"
       />
