@@ -1,22 +1,12 @@
-"use client";
 import { BlogCard } from "@/components/blog/card";
-import { getPhotos } from "@/lib/api/categories";
-import { IMAGE_BASE_URL } from "@/lib/const";
+import { getCategory } from "@/lib/api/categories";
 import Image from "next/image";
-import Masonry from "react-masonry-css";
-import { useQuery } from "react-query";
 
-export default function Page() {
-  const { data } = useQuery({
-    queryKey: "categories",
-    queryFn: getPhotos,
-  });
-  const breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
-    500: 1,
-  };
+import PageClient from "./page.client";
+
+export default async function Page() {
+  const data = await getCategory("family portrait");
+
   return (
     <div className="pt-8 px-4">
       <h1 className="text-4xl font-bold w-fit mx-auto text-center">
@@ -26,27 +16,8 @@ export default function Page() {
         Pensacola, Perdido Key, Orange Beach, Gulf Shores, Fort Morgan and
         Navarre Includes 2 photographers
       </p>
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="flex w-auto"
-        columnClassName="bg-clip-padding px-2"
-      >
-        {data?.data
-          .filter((c) => c.name === "family portrait")
-          .map((category) =>
-            category.photos?.map((image) => (
-              <div key={image.id} className="m-2">
-                <Image
-                  src={IMAGE_BASE_URL + image.url}
-                  width={300}
-                  height={300}
-                  alt="Image"
-                  className="rounded-xl"
-                />
-              </div>
-            ))
-          )}
-      </Masonry>
+      <PageClient photos={data?.data[0].photos} />
+
       <Image
         src="/ratings.webp"
         width={2000}

@@ -1,6 +1,6 @@
 "use client";
 import { BlogCard } from "@/components/blog/card";
-import { getPhotos } from "@/lib/api/categories";
+import { getCategory } from "@/lib/api/categories";
 import { IMAGE_BASE_URL } from "@/lib/const";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
@@ -9,7 +9,7 @@ import { useQuery } from "react-query";
 export default function Page() {
   const { data } = useQuery({
     queryKey: "categories",
-    queryFn: getPhotos,
+    queryFn: getCategory,
   });
   const breakpointColumnsObj = {
     default: 4,
