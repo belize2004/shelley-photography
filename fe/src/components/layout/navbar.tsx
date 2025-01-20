@@ -26,13 +26,17 @@ export function Navbar() {
             priority
           />
         </div>
-        <button className="md:hidden text-black" onClick={toggleMenu}>
+        <Button
+          className="md:hidden text-black"
+          onClick={toggleMenu}
+          variant="ghost"
+        >
           {isOpen ? (
             <XIcon className="w-6 h-6" />
           ) : (
             <MenuIcon className="w-6 h-6" />
           )}
-        </button>
+        </Button>
       </div>
       <div className="flex flex-col w-full gap-2">
         <Image src="/logo1.webp" width={400} height={100} alt="Logo" priority />
