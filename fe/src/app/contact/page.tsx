@@ -9,7 +9,7 @@ export default function Page() {
       ></Script>
       <div
         id="pixieset-contact-form"
-        className="*:!overflow-y-scroll *:!h-[200dvh]"
+        className="*:!overflow-y-scroll *:!h-[130rem]"
       ></div>
       <div className="flex flex-col p-8 gap-4   bg-white">
         <h1 className="text-2xl font-bold">Get in touch</h1>
