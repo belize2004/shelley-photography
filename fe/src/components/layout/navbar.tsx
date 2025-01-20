@@ -35,7 +35,7 @@ export function Navbar() {
         </button>
       </div>
       <div className="flex flex-col w-full gap-2">
-        <Image src="/logo.webp" width={400} height={100} alt="Logo" priority />
+        <Image src="/logo1.webp" width={400} height={100} alt="Logo" priority />
         <h1 className="text-sm font-semibold text-center text-black z-10">
           Shelley and Blaine Bressman Photography and Website Design
         </h1>
