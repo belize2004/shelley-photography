@@ -8,7 +8,7 @@ export function Sidebar() {
   return (
     <main className="hidden lg:flex flex-col py-8 px-4 bg-white h-full w-96 gap-6">
       <div className="flex flex-col gap-2 items-center justify-center">
-        <Image src="/logo.webp" width={300} height={200} alt="Logo" />
+        <Image src="/logo1.webp" width={300} height={200} alt="Logo" />
         <h1 className="text-sm font-semibold text-balance mx-auto w-fit text-center text-black">
           Shelley and Blaine Bressman Photography and Website Design
         </h1>
