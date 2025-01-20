@@ -17,7 +17,7 @@ export default function PageClient({ photos }: { photos: Photo[] }) {
   return (
     <Masonry
       breakpointCols={breakpointColumnsObj}
-      className="flex w-auto"
+      className="flex w-auto mt-4"
       columnClassName="bg-clip-padding px-2"
     >
       {photos?.map((image) => (
