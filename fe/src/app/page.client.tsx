@@ -30,7 +30,7 @@ export default function PageClient({
             height={300}
             alt="Image"
             className="rounded-xl w-full h-auto"
-            sizes="(max-width: 500px) 100vw, (max-width: 700px) 50vw, (max-width: 1100px) 33vw, 25vw"
+            // sizes="(max-width: 500px) 100vw, (max-width: 700px) 50vw, (max-width: 1100px) 33vw, 25vw"
             priority
           />
         </div>
