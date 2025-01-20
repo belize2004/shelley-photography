@@ -1,17 +1,9 @@
-"use client";
-
 import { getPhotos } from "@/lib/api/categories";
-import { IMAGE_BASE_URL } from "@/lib/const";
 import type { Photo } from "@/lib/types";
-import Image from "next/image";
-import { useQuery } from "react-query";
-import Masonry from "react-masonry-css";
+import PageClient from "./page.client";
 
-export default function Home() {
-  const { data } = useQuery({
-    queryKey: "categories",
-    queryFn: getPhotos,
-  });
+export default async function Home() {
+  const data = await getPhotos();
 
   const photoIds = new Set();
   const uniquePhotos: Photo[] = [];
@@ -25,34 +17,9 @@ export default function Home() {
     });
   });
 
-  const breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
-    500: 1,
-  };
-
   return (
     <div className="p-4">
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="flex w-auto"
-        columnClassName="bg-clip-padding px-2"
-      >
-        {uniquePhotos.map((image, idx) => (
-          <div key={image.id} className="mb-4">
-            <Image
-              src={IMAGE_BASE_URL + image.url || "/placeholder.svg"}
-              width={300}
-              height={300}
-              alt="Image"
-              className="rounded-xl w-full h-auto"
-              sizes="(max-width: 500px) 100vw, (max-width: 700px) 50vw, (max-width: 1100px) 33vw, 25vw"
-              priority={idx < 2}
-            />
-          </div>
-        ))}
-      </Masonry>
+      <PageClient uniquePhotos={uniquePhotos} />
     </div>
   );
 }
