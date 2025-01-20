@@ -19,7 +19,7 @@ export function Navbar() {
       <div className="flex flex-row items-center justify-between w-full ">
         <div className="flex flex-col">
           <Image
-            src="/logo.webp"
+            src="/logo1.webp"
             width={150}
             height={100}
             alt="Logo"
