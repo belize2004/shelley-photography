@@ -31,11 +31,23 @@ export interface CategoryCategory extends Struct.ComponentSchema {
   };
 }
 
+export interface GalleryItemGalleryItem extends Struct.ComponentSchema {
+  collectionName: 'components_gallery_item_gallery_items';
+  info: {
+    displayName: 'gallery item';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    order: Schema.Attribute.Integer;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'blog.blog': BlogBlog;
       'category.category': CategoryCategory;
+      'gallery-item.gallery-item': GalleryItemGalleryItem;
     }
   }
 }
