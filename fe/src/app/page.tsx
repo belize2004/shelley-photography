@@ -39,7 +39,7 @@ export default function Home() {
         className="flex w-auto"
         columnClassName="bg-clip-padding px-2"
       >
-        {uniquePhotos.map((image) => (
+        {uniquePhotos.map((image, idx) => (
           <div key={image.id} className="mb-4">
             <Image
               src={IMAGE_BASE_URL + image.url || "/placeholder.svg"}
@@ -48,7 +48,7 @@ export default function Home() {
               alt="Image"
               className="rounded-xl w-full h-auto"
               sizes="(max-width: 500px) 100vw, (max-width: 700px) 50vw, (max-width: 1100px) 33vw, 25vw"
-              priority
+              priority={idx < 2}
             />
           </div>
         ))}
