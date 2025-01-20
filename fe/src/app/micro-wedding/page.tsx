@@ -11,7 +11,7 @@ export default async function Page() {
       <PageClient photos={data?.data[0].photos} />
       <div className="flex flex-col p-8 gap-8">
         {data?.data
-          .filter((c) => c.name === "interior design")
+          .filter((c) => c.name === "micro wedding")
           .map((category) =>
             category.blogs.map((b) => <BlogCard key={b.id} blogPost={b} />)
           )}
