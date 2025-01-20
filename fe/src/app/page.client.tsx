@@ -32,7 +32,8 @@ export default function PageClient({
   }[];
 }) {
   const breakpointColumnsObj = {
-    default: 4,
+    default: 5,
+    1440: 4,
     1100: 3,
     700: 2,
     500: 1,
