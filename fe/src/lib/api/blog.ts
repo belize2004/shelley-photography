@@ -1,4 +1,4 @@
-import { Root } from "../types";
+import { Blog, Root } from "../types";
 import { axiosInstance } from "./instance";
 
 export async function getBlog(id: string) {
@@ -13,7 +13,9 @@ import { queryOptions } from "@tanstack/react-query";
 export const blogsOptions = queryOptions({
   queryKey: ["blogs"],
   queryFn: async () => {
-    const response = await axiosInstance.get<Root>(`/blogs?populate=*`);
+    const response = await axiosInstance.get<{
+      data: Blog[];
+    }>(`/blogs?populate=*`);
 
     return response.data;
   },
