@@ -10,7 +10,7 @@ export default function PageClient() {
   return (
     <>
       <div className="flex flex-col p-8 gap-8">
-        {data.data[0].blogs.map((blog) => (
+        {data.data[0].blogs?.map((blog) => (
           <BlogCard key={blog.id} blogPost={blog} />
         ))}
       </div>
