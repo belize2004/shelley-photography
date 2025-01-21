@@ -34,10 +34,7 @@ export default function PageClient() {
           .map((image, idx) => (
             <div key={image.id} className="mb-4">
               <Image
-                src={
-                  IMAGE_BASE_URL + image.image?.url ??
-                  ("" || "/placeholder.svg")
-                }
+                src={IMAGE_BASE_URL + image.image?.url || "/placeholder.svg"}
                 width={image.image.width}
                 height={image.image.height}
                 alt="Image"
