@@ -1,3 +1,4 @@
+"use client";
 import { BlogCard } from "@/components/blog/card";
 import { blogsOptions } from "@/lib/api/blog";
 
