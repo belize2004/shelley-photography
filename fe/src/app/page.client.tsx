@@ -31,7 +31,7 @@ export default function PageClient() {
             if (b.order === undefined) return -1;
             return a.order + b.order;
           })
-          .map((image, idx) => (
+          .map((image) => (
             <div key={image.id} className="mb-4">
               <Image
                 src={IMAGE_BASE_URL + image.image.url || "/placeholder.svg"}
@@ -39,7 +39,7 @@ export default function PageClient() {
                 height={image.image.height}
                 alt="Image"
                 className="rounded-xl w-full h-auto"
-                priority={idx < 2}
+                priority
               />
             </div>
           ))}
