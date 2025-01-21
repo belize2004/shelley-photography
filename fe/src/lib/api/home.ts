@@ -115,9 +115,15 @@ interface Pagination {
   total: number;
 }
 
-export const getHome = async () => {
-  const response = await axiosInstance.get<Root>(
-    `/homes?populate[gallery_item][populate]=*&populate[blogs][populate]=*`
-  );
-  return response.data;
-};
+import { queryOptions } from "@tanstack/react-query";
+
+export const homeOptions = queryOptions({
+  queryKey: ["home"],
+  queryFn: async () => {
+    const response = await axiosInstance.get<Root>(
+      `/homes?populate[gallery_item][populate]=*&populate[blogs][populate]=*`
+    );
+
+    return response.data;
+  },
+});
