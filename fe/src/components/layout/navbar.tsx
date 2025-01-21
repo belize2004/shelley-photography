@@ -20,8 +20,8 @@ export function Navbar() {
         <div className="flex flex-col">
           <Image
             src="/logo1.webp"
-            width={150}
-            height={100}
+            width={358}
+            height={77.19}
             alt="Logo"
             priority
           />
