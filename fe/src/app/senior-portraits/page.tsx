@@ -1,16 +1,17 @@
-import { categoryOptions } from "@/lib/api/categories";
+import { senior } from "@/lib/api/categories";
 
 import PageClient from "../family-portrait/page.client";
 import { getQueryClient } from "../get-query-client";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
 export default async function Page() {
   const queryClient = getQueryClient();
 
-  void queryClient.prefetchQuery(categoryOptions("senior portraits"));
+  void queryClient.prefetchQuery(senior);
 
   return (
-    <>
-      <PageClient />
-    </>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <PageClient />{" "}
+    </HydrationBoundary>
   );
 }

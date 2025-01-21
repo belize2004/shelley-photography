@@ -2,12 +2,12 @@
 import { Blog } from "../types";
 import { axiosInstance } from "./instance";
 
-interface Root {
-  data: Daum[];
+interface Res {
+  data: ResData[];
   meta: Meta;
 }
 
-interface Daum {
+interface ResData {
   id: number;
   documentId: string;
   createdAt: string;
@@ -120,7 +120,7 @@ import { queryOptions } from "@tanstack/react-query";
 export const homeOptions = queryOptions({
   queryKey: ["home"],
   queryFn: async () => {
-    const response = await axiosInstance.get<Root>(
+    const response = await axiosInstance.get<Res>(
       `/homes?populate[gallery_item][populate]=*&populate[blogs][populate]=*`
     );
 

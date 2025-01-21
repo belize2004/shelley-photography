@@ -1,7 +1,7 @@
 "use client";
 
 import { BlogCard } from "@/components/blog/card";
-import { categoryOptions } from "@/lib/api/categories";
+import { senior } from "@/lib/api/categories";
 import { IMAGE_BASE_URL } from "@/lib/const";
 
 import { useSuspenseQuery } from "@tanstack/react-query";
@@ -9,7 +9,7 @@ import Image from "next/image";
 import Masonry from "react-masonry-css";
 
 export default function PageClient() {
-  const { data } = useSuspenseQuery(categoryOptions("senior portraits"));
+  const { data } = useSuspenseQuery(senior);
   const breakpointColumnsObj = {
     default: 5,
     1440: 4,

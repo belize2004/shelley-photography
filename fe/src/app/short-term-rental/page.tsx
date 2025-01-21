@@ -1,16 +1,17 @@
-import { categoryOptions } from "@/lib/api/categories";
+import { sh } from "@/lib/api/categories";
 
 import PageClient from "../family-portrait/page.client";
 import { getQueryClient } from "../get-query-client";
+import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 
 export default async function Page() {
   const queryClient = getQueryClient();
 
-  void queryClient.prefetchQuery(categoryOptions("short term rental"));
+  void queryClient.prefetchQuery(sh);
 
   return (
-    <>
-      <PageClient />
-    </>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <PageClient />{" "}
+    </HydrationBoundary>
   );
 }

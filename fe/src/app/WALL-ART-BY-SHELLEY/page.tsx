@@ -1,14 +1,15 @@
+import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import PageClient from "../family-portrait/page.client";
 import { getQueryClient } from "../get-query-client";
-import { categoryOptions } from "@/lib/api/categories";
+import { wall } from "@/lib/api/categories";
 
 export default async function Page() {
   const queryClient = getQueryClient();
 
-  void queryClient.prefetchQuery(categoryOptions("wall art by shelley"));
+  void queryClient.prefetchQuery(wall);
   return (
-    <>
-      <PageClient />
-    </>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <PageClient />{" "}
+    </HydrationBoundary>
   );
 }

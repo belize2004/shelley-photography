@@ -1,7 +1,8 @@
 "use client";
 
 import { BlogCard } from "@/components/blog/card";
-import { categoryOptions } from "@/lib/api/categories";
+import { inte } from "@/lib/api/categories";
+
 import { IMAGE_BASE_URL } from "@/lib/const";
 
 import { useSuspenseQuery } from "@tanstack/react-query";
@@ -9,7 +10,7 @@ import Image from "next/image";
 import Masonry from "react-masonry-css";
 
 export default function PageClient() {
-  const { data } = useSuspenseQuery(categoryOptions("interior design"));
+  const { data } = useSuspenseQuery(inte);
   const breakpointColumnsObj = {
     default: 5,
     1440: 4,

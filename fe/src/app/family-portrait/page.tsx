@@ -1,12 +1,13 @@
-import { categoryOptions } from "@/lib/api/categories";
+import { family } from "@/lib/api/categories";
 
 import PageClient from "./page.client";
 import { getQueryClient } from "../get-query-client";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
 export default async function Page() {
   const queryClient = getQueryClient();
 
-  void queryClient.prefetchQuery(categoryOptions("family portrait"));
+  void queryClient.prefetchQuery(family);
 
   return (
     <div className="pt-8 px-4">
@@ -17,7 +18,9 @@ export default async function Page() {
         Pensacola, Perdido Key, Orange Beach, Gulf Shores, Fort Morgan and
         Navarre Includes 2 photographers
       </p>
-      <PageClient />
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <PageClient />
+      </HydrationBoundary>
     </div>
   );
 }

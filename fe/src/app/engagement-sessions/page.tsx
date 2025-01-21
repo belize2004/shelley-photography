@@ -1,15 +1,16 @@
-import { categoryOptions } from "@/lib/api/categories";
+import { engage } from "@/lib/api/categories";
 import PageClient from "./page.client";
 import { getQueryClient } from "../get-query-client";
+import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 
 export default async function Page() {
   const queryClient = getQueryClient();
 
-  void queryClient.prefetchQuery(categoryOptions("engagement sessions"));
+  void queryClient.prefetchQuery(engage);
 
   return (
-    <>
-      <PageClient />
-    </>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <PageClient />{" "}
+    </HydrationBoundary>
   );
 }

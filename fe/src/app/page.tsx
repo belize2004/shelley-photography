@@ -1,5 +1,4 @@
 import PageClient from "./page.client";
-
 import { homeOptions } from "@/lib/api/home";
 import { getQueryClient } from "./get-query-client";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
