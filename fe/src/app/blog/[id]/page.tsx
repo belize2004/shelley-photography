@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import { format } from "date-fns";
@@ -8,12 +8,17 @@ import { getBlog } from "@/lib/api/blog";
 import { IMAGE_BASE_URL } from "@/lib/const";
 import { JSX } from "react";
 import { Root } from "@/lib/types";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
 interface ContentNode {
+  bold: any;
+  url: string;
+  image: any;
   type: string;
   level?: number;
   children?: ContentNode[];
@@ -55,7 +60,7 @@ export default async function Page({ params }: Props) {
       </div>
 
       <div className="prose prose-lg max-w-none">
-        <RenderContent content={postData.content} />
+        <RenderContent content={postData.content as ContentNode[]} />
       </div>
 
       {/* {postData.gallery && postData.gallery.length > 0 && (
@@ -78,6 +83,7 @@ export default async function Page({ params }: Props) {
     </article>
   );
 }
+
 function RenderContent({ content }: { content: ContentNode[] }) {
   return (
     <>
@@ -125,21 +131,25 @@ function RenderContent({ content }: { content: ContentNode[] }) {
               </blockquote>
             );
           case "text":
-            //@ts-expect-error
             if (node.bold) {
               return <strong key={index}>{node.text}</strong>;
             }
             return <span key={index}>{node.text}</span>;
+          case "link":
+            return (
+              <Button asChild key={index} className="bg-blue-600">
+                <Link href={node.url || "#"} className="no-underline">
+                  <RenderContent content={node.children || []} />
+                </Link>
+              </Button>
+            );
           case "image":
             return (
               <img
                 key={index}
-                //@ts-expect-error
-                src={node.image.url || ""}
-                //@ts-expect-error
-                alt={node.image.alt || "Image"}
-                //@ts-expect-error
-                title={node.image.title || ""}
+                src={node.image?.url || ""}
+                alt={node.image?.alt || "Image"}
+                title={node.image?.title || ""}
               />
             );
           default:
