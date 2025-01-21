@@ -118,12 +118,13 @@ interface Pagination {
 import { queryOptions } from "@tanstack/react-query";
 
 export const homeOptions = queryOptions({
-  queryKey: ["home"],
+  queryKey: ["homess"],
   queryFn: async () => {
     const response = await axiosInstance.get<Res>(
       `/homes?populate[gallery_item][populate]=*&populate[blogs][populate]=*`
     );
 
+    console.log(response.data);
     return response.data;
   },
 });

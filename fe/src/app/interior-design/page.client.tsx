@@ -40,13 +40,7 @@ export default function PageClient() {
           </div>
         ))}
       </Masonry>
-      <Image
-        src="/ratings.webp"
-        width={2000}
-        height={2000}
-        alt="Ratings"
-        className="my-8 w-full"
-      />
+
       <div className="flex flex-col p-8 gap-8">
         {data?.data
           .filter((c) => c.name === "interior design")

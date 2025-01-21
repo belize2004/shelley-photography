@@ -1,6 +1,6 @@
 import { senior } from "@/lib/api/categories";
 
-import PageClient from "../family-portrait/page.client";
+import PageClient from "./page.client";
 import { getQueryClient } from "../get-query-client";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
