@@ -35,8 +35,8 @@ export default function PageClient() {
             <div key={image.id} className="mb-4">
               <Image
                 src={IMAGE_BASE_URL + image.image.url || "/placeholder.svg"}
-                width={800}
-                height={800}
+                width={image.image.width}
+                height={image.image.height}
                 alt="Image"
                 className="rounded-xl w-full h-auto"
                 priority={idx < 2}
