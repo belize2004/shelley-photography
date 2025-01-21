@@ -27,7 +27,6 @@ export default function PageClient() {
       >
         {data.data[0].photos?.map((image) => (
           <div key={image.id} className="mb-4">
-            {" "}
             {/* Changed margin to bottom only */}
             <Image
               src={IMAGE_BASE_URL + image.url || "/placeholder.svg"}
@@ -38,7 +37,6 @@ export default function PageClient() {
             />
           </div>
         ))}
-        ``
       </Masonry>
 
       <div className="flex flex-col p-8 gap-8">

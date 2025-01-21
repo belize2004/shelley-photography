@@ -9,7 +9,7 @@ export default async function Page() {
   void queryClient.prefetchQuery(inte);
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <PageClient />{" "}
+      <PageClient />
     </HydrationBoundary>
   );
 }
