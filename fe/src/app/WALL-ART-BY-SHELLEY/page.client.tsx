@@ -31,8 +31,8 @@ export default function PageClient() {
             {/* Changed margin to bottom only */}
             <Image
               src={IMAGE_BASE_URL + image.url || "/placeholder.svg"}
-              width={1200}
-              height={1200}
+              width={image.width || 1200}
+              height={image.height || 120}
               alt="Image"
               className="rounded-xl w-full h-auto" // Made image responsive
             />
