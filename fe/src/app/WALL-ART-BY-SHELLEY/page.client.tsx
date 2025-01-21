@@ -9,7 +9,7 @@ import Image from "next/image";
 import Masonry from "react-masonry-css";
 
 export default function PageClient() {
-  const { data } = useSuspenseQuery(categoryOptions("family portrait"));
+  const { data } = useSuspenseQuery(categoryOptions("wall art by shelley"));
   const breakpointColumnsObj = {
     default: 5,
     1440: 4,
@@ -48,7 +48,7 @@ export default function PageClient() {
       />
       <div className="flex flex-col p-8 gap-8">
         {data?.data
-          .filter((c) => c.name === "family portrait")
+          .filter((c) => c.name === "wall art by shelley")
           .map((category) =>
             category.blogs.map((b) => <BlogCard key={b.id} blogPost={b} />)
           )}

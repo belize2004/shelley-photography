@@ -1,21 +1,14 @@
-import { BlogCard } from "@/components/blog/card";
-import { getCategory } from "@/lib/api/categories";
-
 import PageClient from "../family-portrait/page.client";
+import { getQueryClient } from "../get-query-client";
+import { categoryOptions } from "@/lib/api/categories";
 
 export default async function Page() {
-  const data = await getCategory("wall art by shelley");
+  const queryClient = getQueryClient();
 
+  void queryClient.prefetchQuery(categoryOptions("wall art by shelley"));
   return (
     <>
-      <PageClient photos={data?.data?.[0]?.photos} />
-      <div className="flex flex-col p-8 gap-8">
-        {data?.data
-          .filter((c) => c.name === "wall art by shelley")
-          .map((category) =>
-            category.blogs.map((b) => <BlogCard key={b.id} blogPost={b} />)
-          )}
-      </div>
+      <PageClient />
     </>
   );
 }
