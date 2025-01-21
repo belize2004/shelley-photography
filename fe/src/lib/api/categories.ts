@@ -83,7 +83,7 @@ export const wall = queryOptions({
   queryKey: ["wall"],
   queryFn: async () => {
     const response = await axiosInstance.get<Root>(
-      `/categories?populate[photos][populate]=*&populate[blogs][populate]=*&filters[name][$eq]=wall art by shelley`
+      `/categories?populate[photos][populate]=*&populate[blogs][populate]=*&filters[name][$eq]=wall-art-by-shelley`
     );
 
     return response.data;

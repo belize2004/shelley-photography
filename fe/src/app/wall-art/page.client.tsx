@@ -25,7 +25,7 @@ export default function PageClient() {
         className="flex w-auto mt-4"
         columnClassName="bg-clip-padding px-2"
       >
-        {data.data[0].photos?.map((image) => (
+        {data.data[0]?.photos?.map((image) => (
           <div key={image.id} className="mb-4">
             {" "}
             {/* Changed margin to bottom only */}
