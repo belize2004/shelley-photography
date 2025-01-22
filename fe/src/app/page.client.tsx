@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import Image from "next/image";
@@ -6,119 +7,72 @@ import { IMAGE_BASE_URL } from "@/lib/const";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { homeOptions } from "@/lib/api/home";
 import { BlogCard } from "@/components/blog/card";
-import { useEffect, useState } from "react";
 
-export default function PageClient() {
+interface PageClientProps {
+  isMobile: boolean;
+}
+
+export default function PageClient({ isMobile }: PageClientProps) {
   const { data } = useSuspenseQuery(homeOptions);
 
   const breakpointColumnsObj = {
-    default: 5,
+    default: 3,
     1440: 4,
     1100: 3,
     700: 2,
     500: 1,
   };
 
-  const [isClient, setIsClient] = useState(false);
+  const imagesSorted = data.data[0].gallery_item?.filter(
+    (image) => image.order
+  );
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  const imagesSorted = data.data[0].gallery_item.filter((image) => image.order);
-
-  const imagesUnSorted = data.data[0].gallery_item.filter(
+  const imagesUnSorted = data.data[0].gallery_item?.filter(
     (image) => !image.order
+  );
+
+  const ImageComponent = ({ image, index }: { image: any; index: number }) => (
+    <div key={`image${image.id}`} className="mb-4">
+      <Image
+        src={IMAGE_BASE_URL + (image.image?.url || "")}
+        width={image.image?.width || 1000}
+        height={image.image?.height || 1000}
+        alt={image.image?.alt || "Gallery image"}
+        className="rounded-xl w-full h-auto"
+        priority={index < 4}
+        loading={index < 4 ? "eager" : "lazy"}
+      />
+    </div>
   );
 
   return (
     <>
-      {isClient && window.screen.width > 768 ? (
+      {isMobile ? (
+        <div className="flex flex-col gap-4">
+          {imagesSorted
+            .sort((a, b) => a.order - b.order)
+            .map((image, idx) => (
+              <ImageComponent key={image.id} image={image} index={idx} />
+            ))}
+          {imagesUnSorted.map((image, idx) => (
+            <ImageComponent key={image.id} image={image} index={idx} />
+          ))}
+        </div>
+      ) : (
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="flex w-auto"
           columnClassName="bg-clip-padding px-2"
         >
           {imagesSorted
-            ?.sort((a, b) => {
-              return a.order - b.order;
-            })
-            .filter((image) => image.image?.url)
-            .map((image, idx) => {
-              return (
-                <div key={"image" + image.id} className="mb-4">
-                  <Image
-                    src={IMAGE_BASE_URL + (image.image?.url || "")}
-                    width={image.image?.width || 300}
-                    height={image.image?.height || 300}
-                    alt="Image"
-                    className="rounded-xl w-full h-auto"
-                    priority={idx < 2}
-                  />
-                </div>
-              );
-            })}
-          {imagesUnSorted
-            ?.sort((a, b) => {
-              return a.order - b.order;
-            })
-            .filter((image) => image.image?.url)
-            .map((image, idx) => {
-              return (
-                <div key={"image" + image.id} className="mb-4">
-                  <Image
-                    src={IMAGE_BASE_URL + (image.image?.url || "")}
-                    width={image.image?.width || 300}
-                    height={image.image?.height || 300}
-                    alt="Image"
-                    className="rounded-xl w-full h-auto"
-                    priority={idx < 2}
-                  />
-                </div>
-              );
-            })}
+            .sort((a, b) => a.order - b.order)
+            .map((image, idx) => (
+              <ImageComponent key={image.id} image={image} index={idx} />
+            ))}
+          {imagesUnSorted.map((image, idx) => (
+            <ImageComponent key={image.id} image={image} index={idx} />
+          ))}
         </Masonry>
-      ) : (
-        <div className="flex flex-col gap-4">
-          {imagesSorted
-            ?.sort((a, b) => {
-              return a.order - b.order;
-            })
-            .filter((image) => image.image?.url)
-            .map((image, idx) => {
-              return (
-                <div key={"image" + image.id} className="mb-4">
-                  <Image
-                    src={IMAGE_BASE_URL + (image.image?.url || "")}
-                    width={image.image?.width || 300}
-                    height={image.image?.height || 300}
-                    alt="Image"
-                    className="rounded-xl w-full h-auto"
-                    priority={idx < 2}
-                  />
-                </div>
-              );
-            })}
-          {imagesUnSorted
-            ?.sort((a, b) => {
-              return a.order - b.order;
-            })
-            .filter((image) => image.image?.url)
-            .map((image, idx) => {
-              return (
-                <div key={"image" + image.id} className="mb-4">
-                  <Image
-                    src={IMAGE_BASE_URL + (image.image?.url || "")}
-                    width={image.image?.width || 300}
-                    height={image.image?.height || 300}
-                    alt="Image"
-                    className="rounded-xl w-full h-auto"
-                    priority={idx < 2}
-                  />
-                </div>
-              );
-            })}
-        </div>
       )}
       <div className="flex flex-col p-8 gap-8">
         {data.data[0].blogs.map((b) => (
