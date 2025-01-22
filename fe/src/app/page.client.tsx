@@ -6,9 +6,11 @@ import { IMAGE_BASE_URL } from "@/lib/const";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { homeOptions } from "@/lib/api/home";
 import { BlogCard } from "@/components/blog/card";
+import { useEffect, useState } from "react";
 
 export default function PageClient() {
   const { data } = useSuspenseQuery(homeOptions);
+
   const breakpointColumnsObj = {
     default: 5,
     1440: 4,
@@ -17,7 +19,11 @@ export default function PageClient() {
     500: 1,
   };
 
-  console.log(data);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const imagesSorted = data.data[0].gallery_item.filter((image) => image.order);
 
@@ -27,7 +33,7 @@ export default function PageClient() {
 
   return (
     <>
-      {window !== undefined && window.screen.width > 768 ? (
+      {isClient && window.screen.width > 768 ? (
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="flex w-auto"
@@ -79,7 +85,6 @@ export default function PageClient() {
               return a.order - b.order;
             })
             .filter((image) => image.image?.url)
-            // .reverse()
             .map((image, idx) => {
               return (
                 <div key={"image" + image.id} className="mb-4">
@@ -99,7 +104,6 @@ export default function PageClient() {
               return a.order - b.order;
             })
             .filter((image) => image.image?.url)
-            // .reverse()
             .map((image, idx) => {
               return (
                 <div key={"image" + image.id} className="mb-4">
