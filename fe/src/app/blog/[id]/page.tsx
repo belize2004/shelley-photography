@@ -1,28 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import { format } from "date-fns";
 import { notFound } from "next/navigation";
-
 import { getBlog } from "@/lib/api/blog";
 import { IMAGE_BASE_URL } from "@/lib/const";
-import { JSX } from "react";
 import { Root } from "@/lib/types";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { RenderContent } from "@/lib/utils";
 
 interface Props {
   params: Promise<{ id: string }>;
-}
-
-interface ContentNode {
-  bold: any;
-  url: string;
-  image: any;
-  type: string;
-  level?: number;
-  children?: ContentNode[];
-  text?: string;
 }
 
 export default async function Page({ params }: Props) {
@@ -60,7 +46,7 @@ export default async function Page({ params }: Props) {
       </div>
 
       <div className="prose prose-lg max-w-none">
-        <RenderContent content={postData.content as ContentNode[]} />
+        <RenderContent content={postData.content as any} />
       </div>
 
       {/* {postData.gallery && postData.gallery.length > 0 && (
@@ -81,81 +67,5 @@ export default async function Page({ params }: Props) {
         </section>
       )} */}
     </article>
-  );
-}
-
-export function RenderContent({ content }: { content: ContentNode[] }) {
-  return (
-    <>
-      {content.map((node, index) => {
-        switch (node.type) {
-          case "heading":
-            const HeadingTag = `h${
-              node.level || 1
-            }` as keyof JSX.IntrinsicElements;
-            return (
-              <HeadingTag key={index}>
-                <RenderContent content={node.children || []} />
-              </HeadingTag>
-            );
-          case "paragraph":
-            return (
-              <p key={index}>
-                <RenderContent content={node.children || []} />
-              </p>
-            );
-          case "bullet_list":
-            return (
-              <ul key={index}>
-                {node.children?.map((item, idx) => (
-                  <li key={idx}>
-                    <RenderContent content={item.children || []} />
-                  </li>
-                ))}
-              </ul>
-            );
-          case "ordered_list":
-            return (
-              <ol key={index}>
-                {node.children?.map((item, idx) => (
-                  <li key={idx}>
-                    <RenderContent content={item.children || []} />
-                  </li>
-                ))}
-              </ol>
-            );
-          case "quote":
-            return (
-              <blockquote key={index}>
-                <RenderContent content={node.children || []} />
-              </blockquote>
-            );
-          case "text":
-            if (node.bold) {
-              return <strong key={index}>{node.text}</strong>;
-            }
-            return <span key={index}>{node.text}</span>;
-          case "link":
-            return (
-              <Button asChild key={index} className="bg-blue-600">
-                <Link href={node.url || "#"} className="no-underline">
-                  <RenderContent content={node.children || []} />
-                </Link>
-              </Button>
-            );
-          case "image":
-            return (
-              <img
-                key={index}
-                src={node.image?.url || ""}
-                alt={node.image?.alt || "Image"}
-                title={node.image?.title || ""}
-              />
-            );
-          default:
-            return null;
-        }
-      })}
-    </>
   );
 }
