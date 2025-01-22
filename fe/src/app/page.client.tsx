@@ -19,6 +19,12 @@ export default function PageClient() {
 
   console.log(data);
 
+  const imagesSorted = data.data[0].gallery_item.filter((image) => image.order);
+
+  const imagesUnSorted = data.data[0].gallery_item.filter(
+    (image) => !image.order
+  );
+
   return (
     <>
       {window !== undefined && window.screen.width > 768 ? (
@@ -27,25 +33,40 @@ export default function PageClient() {
           className="flex w-auto"
           columnClassName="bg-clip-padding px-2"
         >
-          {data.data[0].gallery_item
+          {imagesSorted
             ?.sort((a, b) => {
-              if (a.order === undefined && b.order === undefined) return -1;
-              if (a.order === undefined) return -1;
-              if (b.order === undefined) return -1;
-              return a.order + b.order;
+              return a.order - b.order;
             })
             .filter((image) => image.image?.url)
             .map((image, idx) => {
-              // console.log(image.image.url);
               return (
-                <div key={image.id} className="mb-4">
+                <div key={"image" + image.id} className="mb-4">
                   <Image
                     src={IMAGE_BASE_URL + (image.image?.url || "")}
                     width={image.image?.width || 300}
                     height={image.image?.height || 300}
                     alt="Image"
                     className="rounded-xl w-full h-auto"
-                    priority={idx < 5}
+                    priority={idx < 2}
+                  />
+                </div>
+              );
+            })}
+          {imagesUnSorted
+            ?.sort((a, b) => {
+              return a.order - b.order;
+            })
+            .filter((image) => image.image?.url)
+            .map((image, idx) => {
+              return (
+                <div key={"image" + image.id} className="mb-4">
+                  <Image
+                    src={IMAGE_BASE_URL + (image.image?.url || "")}
+                    width={image.image?.width || 300}
+                    height={image.image?.height || 300}
+                    alt="Image"
+                    className="rounded-xl w-full h-auto"
+                    priority={idx < 2}
                   />
                 </div>
               );
@@ -53,23 +74,43 @@ export default function PageClient() {
         </Masonry>
       ) : (
         <div className="flex flex-col gap-4">
-          {data.data[0].gallery_item
+          {imagesSorted
             ?.sort((a, b) => {
-              return b.order - a.order;
+              return a.order - b.order;
             })
             .filter((image) => image.image?.url)
+            // .reverse()
             .map((image, idx) => {
               return (
-                <div key={image.id} className="mb-4">
+                <div key={"image" + image.id} className="mb-4">
                   <Image
                     src={IMAGE_BASE_URL + (image.image?.url || "")}
                     width={image.image?.width || 300}
                     height={image.image?.height || 300}
                     alt="Image"
                     className="rounded-xl w-full h-auto"
-                    priority={idx < 5}
+                    priority={idx < 2}
                   />
-                  {image.order}
+                </div>
+              );
+            })}
+          {imagesUnSorted
+            ?.sort((a, b) => {
+              return a.order - b.order;
+            })
+            .filter((image) => image.image?.url)
+            // .reverse()
+            .map((image, idx) => {
+              return (
+                <div key={"image" + image.id} className="mb-4">
+                  <Image
+                    src={IMAGE_BASE_URL + (image.image?.url || "")}
+                    width={image.image?.width || 300}
+                    height={image.image?.height || 300}
+                    alt="Image"
+                    className="rounded-xl w-full h-auto"
+                    priority={idx < 2}
+                  />
                 </div>
               );
             })}
