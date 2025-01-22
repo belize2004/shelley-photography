@@ -84,7 +84,7 @@ export default async function Page({ params }: Props) {
   );
 }
 
-function RenderContent({ content }: { content: ContentNode[] }) {
+export function RenderContent({ content }: { content: ContentNode[] }) {
   return (
     <>
       {content.map((node, index) => {
