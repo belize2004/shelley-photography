@@ -2,6 +2,13 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Website Design Pensacola Florida",
+  description:
+    "Elevate your online presence with a luxury architecture and interior design website design company based in Pensacola, Florida. Specializing in bespoke, elegant designs tailored to showcase your unique vision.",
+};
 
 export default async function Page() {
   return (
