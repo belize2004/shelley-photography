@@ -18,25 +18,25 @@ export function Navbar() {
     <nav className=" flex items-center py-8 px-4 bg-white w-full lg:hidden gap-6 flex-col">
       <div className="flex flex-row items-center justify-between w-full ">
         <div className="flex flex-col">
-          <Image
+          {/* <Image
             src="/logo1.webp"
             width={150}
             height={100}
             alt="Logo"
             priority
-          />
+          /> */}
         </div>
-        <Button
+        <div
           className="md:hidden text-black"
           onClick={toggleMenu}
-          variant="ghost"
+          // variant="ghost"
         >
           {isOpen ? (
-            <XIcon className="w-6 h-6" />
+            <XIcon className="w-8 h-8" />
           ) : (
-            <MenuIcon className="w-6 h-6" />
+            <MenuIcon className="w-8 h-8" />
           )}
-        </Button>
+        </div>
       </div>
       <div className="flex flex-col w-full gap-2">
         <Image src="/logo1.webp" width={358} height={77.19} alt="Logo" />
