@@ -11,7 +11,7 @@ import Masonry from "react-masonry-css";
 export default function PageClient() {
   const { data } = useSuspenseQuery(family);
   const breakpointColumnsObj = {
-    default: 5,
+    default: 3,
     1440: 4,
     1100: 3,
     700: 2,
