@@ -4,6 +4,7 @@ import "./globals.css";
 import { Sidebar } from "@/components/layout/side-bar";
 import { Providers } from "./providers";
 import { Navbar } from "@/components/layout/navbar";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const mont = Montserrat({
   variable: "--font-montserrat",
@@ -22,6 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="G-8J64RKE9D8" />
       <body
         className={`${mont.className} antialiased bg-[#e1dcd8] flex h-screen max-h-screen  lg:overflow-hidden flex-col lg:flex-row`}
       >
