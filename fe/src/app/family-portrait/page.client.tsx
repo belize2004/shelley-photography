@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import { BlogCard } from "@/components/blog/card";
 import { family } from "@/lib/api/categories";
 import { IMAGE_BASE_URL } from "@/lib/const";
 import { RenderContent } from "@/lib/utils";
@@ -48,13 +49,13 @@ export default function PageClient() {
         className="my-8 w-full"
       />
       <div className="flex flex-col p-8 gap-8">
-        {/* {data?.data
-          .filter((c) => c.name === "family portrait")
-          .map((category) =>
-            category.blogs.map((b) => <BlogCard key={b.id} blogPost={b} />)
-          )} */}
         <RenderContent content={data.data[0].blogs[0].content as any} />
-      </div>
+      </div>{" "}
+      {data?.data
+        .filter((c) => c.name === "family portrait")
+        .map((category) =>
+          category.blogs.map((b) => <BlogCard key={b.id} blogPost={b} />)
+        )}
     </>
   );
 }
