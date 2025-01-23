@@ -60,7 +60,8 @@ export function Navbar() {
           width={600}
           height={600}
           alt="Testmonial"
-          className="w-60 mt-4 md:mt-0"
+          className="w-full mt-4 md:mt-0"
+          priority
         />
       </div>
       <div
