@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 
+import { GoogleTagManager } from "@next/third-parties/google";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 
@@ -20,6 +21,9 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
   );
 
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <>
+      <GoogleTagManager gtmId="G-8J64RKE9D8" />
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    </>
   );
 };
