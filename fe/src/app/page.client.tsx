@@ -49,13 +49,13 @@ export default function PageClient({ isMobile }: PageClientProps) {
     <>
       {isMobile ? (
         <div className="flex flex-col gap-4">
-          <Image
+          {/* <Image
             src="/ratings.webp"
             width={2000}
             height={2000}
             alt="Ratings"
             className="my-8 w-full"
-          />
+          /> */}
           {imagesSorted
             .sort((a, b) => a.order - b.order)
             .map((image, idx) => (
