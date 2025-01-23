@@ -56,7 +56,7 @@ export function Navbar() {
           </Link>
         </Button>
         <Image
-          src="/ratings.webp"
+          src="/mobile-ratings.webp"
           width={600}
           height={600}
           alt="Testmonial"
