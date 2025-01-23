@@ -55,6 +55,13 @@ export function Navbar() {
             Chat with me
           </Link>
         </Button>
+        <Image
+          src="/ratings.webp"
+          width={600}
+          height={600}
+          alt="Testmonial"
+          className="w-60 mt-4 md:mt-0"
+        />
       </div>
       <div
         className={`${
