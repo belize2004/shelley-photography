@@ -47,14 +47,39 @@ export default function PageClient({ isMobile }: PageClientProps) {
   return (
     <>
       {isMobile ? (
-        <div className="flex flex-col gap-4">
+        // <div className="flex flex-col gap-4">
+        //   {/* <Image
+        //     src="/ratings.webp"
+        //     width={2000}
+        //     height={2000}
+        //     alt="Ratings"
+        //     className="my-8 w-full"
+        //   /> */}
+        //   {imagesSorted
+        //     .sort((a, b) => a.order - b.order)
+        //     .map((image, idx) => (
+        //       <ImageComponent key={image.id} image={image} index={idx} />
+        //     ))}
+        //   {imagesUnSorted.map((image, idx) => (
+        //     <ImageComponent key={image.id} image={image} index={idx} />
+        //   ))}
+        // </div>
+        <Masonry
+          breakpointCols={{
+            default: 2,
+            500: 2,
+          }}
+          className="flex w-auto"
+          columnClassName="bg-clip-padding px-2"
+        >
           {/* <Image
-            src="/ratings.webp"
-            width={2000}
-            height={2000}
-            alt="Ratings"
-            className="my-8 w-full"
-          /> */}
+          src="/ratings.webp"
+          width={2000}
+          height={2000}
+          alt="Ratings"
+          className="my-8 w-full"
+        /> */}
+
           {imagesSorted
             .sort((a, b) => a.order - b.order)
             .map((image, idx) => (
@@ -63,7 +88,7 @@ export default function PageClient({ isMobile }: PageClientProps) {
           {imagesUnSorted.map((image, idx) => (
             <ImageComponent key={image.id} image={image} index={idx} />
           ))}
-        </div>
+        </Masonry>
       ) : (
         <Masonry
           breakpointCols={breakpointColumnsObj}
