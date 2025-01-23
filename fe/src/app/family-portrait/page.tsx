@@ -4,6 +4,7 @@ import PageClient from "./page.client";
 import { getQueryClient } from "../get-query-client";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { Metadata } from "next";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Portrait Photographer Pensacola Florida",
@@ -15,6 +16,9 @@ export default async function Page() {
   const queryClient = getQueryClient();
 
   void queryClient.prefetchQuery(family);
+  const headersList = headers();
+  const userAgent = (await headersList).get("user-agent") || "";
+  const isMobile = /mobile/i.test(userAgent);
 
   return (
     <div className="pt-8 px-4">
@@ -26,7 +30,7 @@ export default async function Page() {
         Navarre Includes 2 photographers
       </p>
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <PageClient />
+        <PageClient isMobile={isMobile} />
       </HydrationBoundary>
     </div>
   );

@@ -3,6 +3,7 @@ import PageClient from "./page.client";
 import { getQueryClient } from "../get-query-client";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { Metadata } from "next";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Engagement Sessions Pensacola | Shelley Bressman Photography",
@@ -15,9 +16,15 @@ export default async function Page() {
 
   void queryClient.prefetchQuery(engage);
 
+  const headersList = headers();
+  const userAgent = (await headersList).get("user-agent") || "";
+  const isMobile = /mobile/i.test(userAgent);
+
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <PageClient />
-    </HydrationBoundary>
+    <div className="p-4">
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <PageClient isMobile={isMobile} />
+      </HydrationBoundary>
+    </div>
   );
 }

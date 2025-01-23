@@ -9,7 +9,11 @@ import Image from "next/image";
 import Link from "next/link";
 import Masonry from "react-masonry-css";
 
-export default function PageClient() {
+interface PageClientProps {
+  isMobile: boolean;
+}
+
+export default function PageClient({ isMobile }: PageClientProps) {
   const { data } = useSuspenseQuery(reale);
   const breakpointColumnsObj = {
     default: 3,
@@ -21,32 +25,58 @@ export default function PageClient() {
 
   return (
     <>
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="flex w-auto mt-4"
-        columnClassName="bg-clip-padding px-2"
-      >
-        {/* <Image
-          src="/ratings.webp"
-          width={2000}
-          height={2000}
-          alt="Ratings"
-          className="my-8 w-full"
-        /> */}
-        {data.data[0].photos?.map((image) => (
-          <div key={image.id} className="mb-4">
-            {" "}
-            {/* Changed margin to bottom only */}
-            <Image
-              src={IMAGE_BASE_URL + image.url || "/placeholder.svg"}
-              width={image.width || 1200}
-              height={image.height || 120}
-              alt="Image"
-              className="rounded-xl w-full h-auto" // Made image responsive
-            />
-          </div>
-        ))}
-      </Masonry>
+      {isMobile ? (
+        <div className="flex flex-col gap-4">
+          {/* <Image
+            src="/ratings.webp"
+            width={2000}
+            height={2000}
+            alt="Ratings"
+            className="my-8 w-full"
+          /> */}
+          {data.data[0].photos
+            // ?.sort((a, b) => a.order - b.order)
+            .map((image, idx) => (
+              <div key={image.id} className="mb-4">
+                {/* Changed margin to bottom only */}
+                <Image
+                  src={IMAGE_BASE_URL + image.url || "/placeholder.svg"}
+                  width={image.width || 1200}
+                  height={image.height || 120}
+                  alt="Image"
+                  className="rounded-xl w-full h-auto" // Made image responsive
+                />
+              </div>
+            ))}
+        </div>
+      ) : (
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="flex w-auto"
+          columnClassName="bg-clip-padding px-2"
+        >
+          {/* <Image
+            src="/ratings.webp"
+            width={2000}
+            height={2000}
+            alt="Ratings"
+            className="my-8 w-full"
+          /> */}
+
+          {data.data[0].photos.map((image, idx) => (
+            <div key={image.id} className="mb-4">
+              {/* Changed margin to bottom only */}
+              <Image
+                src={IMAGE_BASE_URL + image.url || "/placeholder.svg"}
+                width={image.width || 1200}
+                height={image.height || 120}
+                alt="Image"
+                className="rounded-xl w-full h-auto" // Made image responsive
+              />
+            </div>
+          ))}
+        </Masonry>
+      )}
 
       <div className="flex flex-col p-8 gap-2">
         <h1 className="text-2xl">REAL ESTATE PRICING</h1>
