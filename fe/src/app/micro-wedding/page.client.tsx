@@ -25,13 +25,13 @@ export default function PageClient() {
         className="flex w-auto mt-4"
         columnClassName="bg-clip-padding px-2"
       >
-        <Image
+        {/* <Image
           src="/ratings.webp"
           width={2000}
           height={2000}
           alt="Ratings"
           className="my-8 w-full"
-        />
+        /> */}
         {data.data[0].photos?.map((image) => (
           <div key={image.id} className="mb-4">
             {" "}
