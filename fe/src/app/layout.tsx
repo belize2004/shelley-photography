@@ -4,12 +4,7 @@ import "./globals.css";
 import { Sidebar } from "@/components/layout/side-bar";
 import { Providers } from "./providers";
 import { Navbar } from "@/components/layout/navbar";
-import dynamic from "next/dynamic";
-
-const GoogleTag = dynamic(
-  () => import("./google-tag").then((mod) => mod.GoogleTag),
-  { ssr: false }
-);
+import { GoogleTag } from "./google-tag";
 
 const mont = Montserrat({
   variable: "--font-montserrat",
