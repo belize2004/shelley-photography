@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.shelleyandblaine.com
+
+# Sitemaps
+Sitemap: https://www.shelleyandblaine.com/sitemap.xml
