@@ -17,13 +17,15 @@ export function Sidebar() {
           alt="Logo"
           priority
         />
-        <h1
-          className="text-sm font-semibold text-balance mx-auto w-fit text-center text-black"
-          style={{
-            fontFamily: "Playwrite NZ Variable",
-          }}
-        >
-          Shelley and Blaine Bressman Photography and Website Design
+        <h1 className="text-sm font-semibold text-balance mx-auto w-fit text-center text-black">
+          <span
+            style={{
+              fontFamily: "Playwrite NZ Variable",
+            }}
+          >
+            Shelley and Blaine Bressman
+          </span>
+          <span>Photography and Website Design</span>
         </h1>
       </div>
       <Separator className="h-px bg-[#c7c7c7] w-1/2" />
