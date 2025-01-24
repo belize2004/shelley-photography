@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { SidebarNav } from "./side-bar-item";
 import { MenuIcon, XIcon } from "lucide-react";
+import "@fontsource-variable/playwrite-nz";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +41,12 @@ export function Navbar() {
       </div>
       <div className="flex flex-col w-full gap-2">
         <Image src="/logo1.webp" width={358} height={77.19} alt="Logo" />
-        <h1 className="text-sm font-semibold text-center text-black z-10">
+        <h1
+          className="text-sm font-semibold text-center text-black z-10"
+          style={{
+            fontFamily: "Playwrite NZ Variable",
+          }}
+        >
           Shelley and Blaine Bressman Photography and Website Design
         </h1>
         <p className="text-[#797878] text-base text-center md:text-left w-full z-10">

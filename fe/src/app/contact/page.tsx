@@ -14,7 +14,7 @@ export default function Page() {
       <div className="flex flex-col p-8 gap-4   bg-white">
         <h1 className="text-2xl font-bold">Get in touch</h1>
         <p>850.490.5147</p>
-        <p>shelley@shelleybphotography.com</p>
+        <p>info@shelleyandblaine.com</p>
       </div>
     </>
   );

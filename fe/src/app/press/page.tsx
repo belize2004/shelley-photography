@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function PressPage() {
   return (
-    <main className=" space-y-4 items-center justify-center  p-8 h-screen overflow-y-scroll w-fit mx-auto">
+    <main className=" space-y-4 items-center justify-center  p-8   w-fit mx-auto">
       <h1 className="text-4xl font-bold text-center">In The Press</h1>
       <p className="text-lg  text-center">
         In April of 2023 the Wall Street Journal asked me to do a photo shoot in
@@ -31,6 +31,13 @@ export default function PressPage() {
       />
       <Image
         src="/67198aee410377c6a63ba508_662278fa5939720c861caa81_live events-min.webp"
+        width={500}
+        height={500}
+        alt="Image"
+        className="w-fit mx-auto"
+      />
+      <Image
+        src="/ccm.webp"
         width={500}
         height={500}
         alt="Image"

@@ -4,6 +4,8 @@ import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { SidebarNav } from "./side-bar-item";
+import "@fontsource-variable/playwrite-nz";
+
 export function Sidebar() {
   return (
     <main className="hidden lg:flex flex-col py-8 px-4 bg-white h-full w-96 gap-6">
@@ -15,7 +17,12 @@ export function Sidebar() {
           alt="Logo"
           priority
         />
-        <h1 className="text-sm font-semibold text-balance mx-auto w-fit text-center text-black">
+        <h1
+          className="text-sm font-semibold text-balance mx-auto w-fit text-center text-black"
+          style={{
+            fontFamily: "Playwrite NZ Variable",
+          }}
+        >
           Shelley and Blaine Bressman Photography and Website Design
         </h1>
       </div>

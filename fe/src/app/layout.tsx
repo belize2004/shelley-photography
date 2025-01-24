@@ -31,7 +31,7 @@ export default function RootLayout({
             <Sidebar />
             <Navbar />
           </aside>
-          <main className="grow h-screen lg:overflow-y-scroll ">
+          <main className="grow h-screen lg:overflow-y-scroll flex-1">
             {children}
           </main>
         </body>
