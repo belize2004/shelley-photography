@@ -44,12 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 0.9,
     },
-    {
-      url: "https://www.shelleyandblaine.com/micro-wedding",
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.9,
-    },
+    // {
+    //   url: "https://www.shelleyandblaine.com/micro-wedding",
+    //   lastModified: new Date(),
+    //   changeFrequency: "daily",
+    //   priority: 0.9,
+    // },
     {
       url: "https://www.shelleyandblaine.com/wall-art",
       lastModified: new Date(),
