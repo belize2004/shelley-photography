@@ -17,7 +17,7 @@ export function Sidebar() {
           alt="Logo"
           priority
         />
-        <h1 className="text-sm font-semibold text-balance mx-auto w-fit text-center text-black">
+        <h1 className="text-sm font-semibold text-balance mx-auto w-fit text-center text-black flex flex-col gap-px">
           <span
             style={{
               fontFamily: "Playwrite NZ Variable",

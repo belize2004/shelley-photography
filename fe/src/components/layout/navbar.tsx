@@ -41,7 +41,7 @@ export function Navbar() {
       </div>
       <div className="flex flex-col w-full gap-2">
         <Image src="/logo1.webp" width={358} height={77.19} alt="Logo" />
-        <h1 className="text-sm font-semibold text-center text-black z-10">
+        <h1 className="text-sm font-semibold text-balance mx-auto w-fit text-center text-black flex flex-col gap-px">
           <span
             style={{
               fontFamily: "Playwrite NZ Variable",
