@@ -82,7 +82,7 @@ export function Navbar() {
             { name: "Engagement Sessions", href: "/engagement-sessions" },
             { name: "Senior Portraits", href: "/senior-portraits" },
             { name: "Micro Wedding", href: "/micro-wedding" },
-            { name: "WALL ART BY SHELLEY", href: "/wall-art" },
+            // { name: "WALL ART BY SHELLEY", href: "/wall-art" },
             { name: "Website Design Service", href: "/website-design-service" },
             { name: "Contact", href: "/contact" },
             { name: "About", href: "/about" },
