@@ -16,11 +16,11 @@ export default function Page() {
       <p className="text-xl font-semibold">
         Capturing the Beauty of the World Through Photography
       </p>
-      <p className="text-lg font-semibold">
-        My name is Shelley. Three and a half years ago my church was in need of
-        a photographer. After a month of using the equipment that I had for 20
-        years I decided it was time to invest in newer, better equipment. In
-        making that decision to purchase new equipment
+      <p className="text-lg ">
+        My name is Shelley. In 2021 my church was in need of a photographer.
+        After a month of using the equipment that I had for 20 years I decided
+        it was time to invest in newer, better equipment. In making that
+        decision to purchase new equipment
       </p>
       <p className="text-lg ">
         I also decided it was time to start doing photography professionally. I
