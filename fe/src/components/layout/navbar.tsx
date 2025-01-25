@@ -66,8 +66,8 @@ export function Navbar() {
         </Button>
         <Image
           src="/rates.webp"
-          width={1200}
-          height={1200}
+          width={398}
+          height={224}
           alt="Testmonial"
           className="w-full mt-4 md:mt-0"
           priority
