@@ -56,7 +56,7 @@ export function Sidebar() {
       <Separator className="h-px bg-[#c7c7c7] w-1/2" />
 
       <Button className="text-lg bg-[#3898ec] font-bold w-fit" asChild>
-        <Link href="https://m.me/shelleybressmanphotography">Chat with me</Link>
+        <Link href="https://m.me/shelleyandblaine">Chat with me</Link>
       </Button>
       <Image
         src="/testmonial.webp"

@@ -30,7 +30,7 @@ export function Navbar() {
         <div
           className="md:hidden text-black"
           onClick={toggleMenu}
-          // variant="ghost"
+        // variant="ghost"
         >
           {isOpen ? (
             <XIcon className="w-8 h-8" />
@@ -60,7 +60,7 @@ export function Navbar() {
           className="text-lg bg-[#3898ec] font-bold w-fit mt-4 md:mt-0 mx-auto z-10"
           asChild
         >
-          <Link href="https://m.me/shelleybressmanphotography">
+          <Link href="https://m.me/shelleyandblaine">
             Chat with me
           </Link>
         </Button>
@@ -74,9 +74,8 @@ export function Navbar() {
         />
       </div>
       <div
-        className={`${
-          isOpen ? "flex h-screen" : "hidden"
-        } absolute top-20 left-0 w-full flex-col items-center md:flex md:flex-row md:items-center gap-4 bg-white transition-opacity duration-300 ease-in-out z-20`}
+        className={`${isOpen ? "flex h-screen" : "hidden"
+          } absolute top-20 left-0 w-full flex-col items-center md:flex md:flex-row md:items-center gap-4 bg-white transition-opacity duration-300 ease-in-out z-20`}
       >
         {/* <Separator className="h-px bg-[#c7c7c7] w-full md:w-1/2" /> */}
 
