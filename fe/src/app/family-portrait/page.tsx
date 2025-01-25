@@ -10,6 +10,13 @@ export const metadata: Metadata = {
   title: "Portrait Photographer Pensacola Florida",
   description:
     "Capture timeless moments with professional portrait photography by Shelley Bressman in Pensacola, Florida. Serving Pensacola Beach, Perdido Key, Orange Beach, Gulf Shores, and Fort Morgan, Alabama, Shelley creates stunning, personalized portraits for every occasion",
+
+  openGraph: {
+    type: 'website',
+    images: [
+      "https://i.ibb.co/DVZDyBP/family-og.png"
+    ]
+  }
 };
 
 export default async function Page() {

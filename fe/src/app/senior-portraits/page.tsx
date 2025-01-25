@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   title: "Senior Portrait Photography Pensacola | Shelley Bressman Photography",
   description:
     "Senior portrait photography in Pensacola by Shelley Bressman Photography captures your unique style and personality with professional, creative, and timeless images.",
+  openGraph: {
+    type: 'website',
+    images: [
+      "https://i.ibb.co/vCFHpPB/senior-og.jpg"
+    ]
+  }
 };
 
 export default async function Page() {

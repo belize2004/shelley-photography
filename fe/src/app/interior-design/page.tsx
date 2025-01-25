@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   title: "Interior Design photography Pensacola Florida by Shelley Bressman",
   description:
     "Professional interior design photography in Pensacola, Florida by Shelley Bressman, showcasing elegant and detailed images that highlight the beauty and uniqueness of each space.",
+
+  openGraph: {
+    type: 'website',
+    images: [
+      'https://i.ibb.co/qJG7W4R/int-og.png'
+    ]
+  }
 };
 
 export default async function Page() {

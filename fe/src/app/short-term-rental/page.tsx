@@ -11,6 +11,12 @@ export const metadata: Metadata = {
     "Professional Short Term rental Airbnb VRBO Photography by Shelley Bressman",
   description:
     "Enhance your short-term rental or Airbnb listing with professional photography by Shelley Bressman in Pensacola, Florida. Specializing in high-quality images that showcase your property’s unique features, Shelley helps attract more guests and bookings.",
+  openGraph: {
+    type: 'website',
+    images: [
+      'https://i.ibb.co/ZMhtx2s/sh-og.png'
+    ]
+  }
 };
 
 export default async function Page() {

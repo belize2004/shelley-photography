@@ -10,6 +10,12 @@ export const metadata: Metadata = {
   title: "Real Estate photography in Pensacola Florida by Shelley Bressman",
   description:
     "Real Estate photography in Pensacola, Florida by Shelley Bressman, capturing stunning property images that highlight every unique detail and maximize visual appeal for listings.",
+  openGraph: {
+    type: 'website',
+    images: [
+      "https://i.ibb.co/1TXR08X/real-og.png"
+    ]
+  }
 };
 
 export default async function Page() {

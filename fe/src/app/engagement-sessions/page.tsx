@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   title: "Engagement Sessions Pensacola | Shelley Bressman Photography",
   description:
     "Engagement sessions in Pensacola by Shelley Bressman Photography beautifully capture your love story with professional, romantic, and timeless photography.",
+  openGraph: {
+    type: 'website',
+    title: "Engagement Sessions Pensacola | Shelley Bressman Photography",
+    images: [
+      'https://i.ibb.co/BTFs6zm/eng-og.jpg'
+    ]
+  }
 };
 
 export default async function Page() {
