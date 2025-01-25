@@ -82,6 +82,37 @@ export default function PageClient({ isMobile }: PageClientProps) {
           ))}
         </Masonry>
       )}
+      <h1 className="text-2xl">
+        Intimate Micro Wedding Photography Pricing
+      </h1>
+      <div className="textblockpricing">
+        <strong>
+          A micro wedding is an intimate wedding celebration that typically includes a smaller guest list—usually 20 people or fewer.
+          <br /><br />
+          1 Hour $900
+          <br />
+        </strong>
+        <a href="https://shelleybressmanphotography.pixieset.com/booking/micro-wedding" target="_blank" className="link-3" rel="noopener noreferrer">
+          <strong>BOOK NOW</strong>
+        </a>
+        <strong>
+          <br /><br />
+          Up to 2 Hours $1200
+          <br />
+        </strong>
+        <a href="https://shelleybressmanphotography.pixieset.com/booking/micro-wedding-2-hours" target="_blank" className="link-3" rel="noopener noreferrer">
+          <strong>BOOK NOW</strong>
+        </a>
+        <strong>
+          <br /><br />
+          Up to 3 Hours $1500
+          <br />
+        </strong>
+        <a href="https://shelleybressmanphotography.pixieset.com/booking/micro-wedding-3-hour" target="_blank" className="link-2" rel="noopener noreferrer">
+          <strong>BOOK NOW</strong>
+        </a>
+        <br /><br />
+      </div>
       <div className="flex flex-col p-8 gap-8">
         {data.data[0].blogs.map((b) => (
           <BlogCard key={b.id} blogPost={b} />

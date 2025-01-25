@@ -80,6 +80,46 @@ export default function PageClient({ isMobile }: PageClientProps) {
           ))}
         </Masonry>
       )}
+      <h1 className="text-2xl">
+        Senior Portrait Pricing
+      </h1>
+      <div className="paragraphpricing prose  [&_a]:text-blue-500 [&_a]:underline">
+        <strong>
+          Senior Portrait Session Pricing Shelley Bressman Photography Pensacola Florida
+          <br />
+        </strong>
+        Capture your senior year memories with professional, timeless portraits that showcase your unique style.
+        <br /><br />
+        <strong>Senior Session</strong>
+        <br />
+        <strong>Time:</strong> 1 Hour
+        <br />
+        <strong>Images:</strong> 20 professionally edited images
+        <br />
+        <strong>Price:</strong> $350
+        <br />
+        <strong>Details:</strong>
+        <br />
+        Up to 2 locations
+        <br />
+        1 clothing change
+        <br />
+        Option to purchase additional images or the whole gallery after delivery
+        <br /><br />
+        <a href="https://shelleybressmanphotography.pixieset.com/booking/senior-portraits-prom-photos" target="_blank" rel="noopener noreferrer">
+          <strong>Book Your Session Now</strong>
+        </a>
+        <br /><br />
+        <strong>What’s Included</strong>
+        <br />
+        • A personalized photography experience tailored to reflect your personality and style.
+        <br />
+        • High-quality, professionally edited images perfect for sharing and printing.
+        <br />
+        Ready to celebrate your senior year with stunning portraits?
+        <br />
+        Contact Shelley Bressman Photography to schedule your session today!
+      </div>
       <div className="flex flex-col p-8 gap-8">
         {data.data[0].blogs.map((b) => (
           <BlogCard key={b.id} blogPost={b} />
