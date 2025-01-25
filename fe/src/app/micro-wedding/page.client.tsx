@@ -85,7 +85,7 @@ export default function PageClient({ isMobile }: PageClientProps) {
       <h1 className="text-2xl">
         Intimate Micro Wedding Photography Pricing
       </h1>
-      <div className="textblockpricing">
+      <div className="textblockpricing prose  [&_a]:text-blue-500 [&_a]:underline">
         <strong>
           A micro wedding is an intimate wedding celebration that typically includes a smaller guest list—usually 20 people or fewer.
           <br /><br />
