@@ -5,6 +5,7 @@ import { Sidebar } from "@/components/layout/side-bar";
 import { Providers } from "./providers";
 import { Navbar } from "@/components/layout/navbar";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { WebVitals } from "@/components/layout/web-vitals";
 const mont = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
         <body
           className={`${mont.className} antialiased bg-[#e1dcd8] flex h-screen max-h-screen  lg:overflow-hidden flex-col lg:flex-row`}
         >
+          <WebVitals />
           <aside className="lg:flex-grow-0 bg-white lg:h-screen ">
             <Sidebar />
             <Navbar />
