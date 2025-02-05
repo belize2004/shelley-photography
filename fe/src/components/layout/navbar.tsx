@@ -86,7 +86,7 @@ export function Navbar() {
             { name: "Interior design", href: "/interior-design" },
             { name: "Real estate", href: "/real-estate" },
             { name: "Short term rental", href: "/short-term-rental" },
-            // { name: "Family portrait", href: "/family-portrait" },
+            { name: "Family portrait", href: "/family-portrait" },
             // { name: "Engagement Sessions", href: "/engagement-sessions" },
             // { name: "Senior Portraits", href: "/senior-portraits" },
             // { name: "Micro Wedding", href: "/micro-wedding" },

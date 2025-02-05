@@ -41,7 +41,7 @@ export function Sidebar() {
           { name: "Interior design", href: "/interior-design" },
           { name: "real estate", href: "/real-estate" },
           { name: "short term rental", href: "/short-term-rental" },
-          // { name: "family portrait", href: "/family-portrait" },
+          { name: "family portrait", href: "/family-portrait" },
           // { name: "Engagement Sessions", href: "/engagement-sessions" },
           // { name: "Senior Portraits", href: "/senior-portraits" },
           // { name: "Micro Wedding", href: "/micro-wedding" },
