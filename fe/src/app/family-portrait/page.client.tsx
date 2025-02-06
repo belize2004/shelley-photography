@@ -112,10 +112,10 @@ export default function PageClient({ isMobile }: PageClientProps) {
         className="my-8 w-full"
       />
       <div className="flex flex-col p-8 gap-8">
-        <RenderContent content={data.data[0].blogs[0].content as any} />
+        {/* <RenderContent content={data?.data?.[0].blogs?.[0]?.content as any || ''} /> */}
       </div>{" "}
       {data?.data
-        .filter((c) => c.name === "family portrait")
+        ?.filter((c) => c.name === "family-portrait")
         .map((category) =>
           category.blogs.map((b) => <BlogCard key={b.id} blogPost={b} />)
         )}

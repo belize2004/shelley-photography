@@ -42,7 +42,7 @@ export default function PageClient({ isMobile }: PageClientProps) {
        className="my-8 w-full"
      /> */}
 
-          {data.data[0].photos.map((image, idx) => (
+          {data.data[0]?.photos?.map((image, idx) => (
             <div key={image.id} className="mb-4">
               <Image
                 src={IMAGE_BASE_URL + image.url || "/placeholder.svg"}
@@ -68,7 +68,7 @@ export default function PageClient({ isMobile }: PageClientProps) {
             className="my-8 w-full"
           /> */}
 
-          {data.data[0].photos.map((image, idx) => (
+          {data.data[0]?.photos?.map((image, idx) => (
             <div key={image.id} className="mb-4">
               {/* Changed margin to bottom only */}
               <Image
