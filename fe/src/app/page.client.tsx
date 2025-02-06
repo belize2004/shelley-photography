@@ -6,13 +6,14 @@ import { IMAGE_BASE_URL } from "@/lib/const";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { homeOptions } from "@/lib/api/home";
 import { BlogCard } from "@/components/blog/card";
+import { home } from "@/lib/api/categories";
 
 interface PageClientProps {
   isMobile: boolean;
 }
 
 export default function PageClient({ isMobile }: PageClientProps) {
-  const { data } = useSuspenseQuery(homeOptions);
+  const { data } = useSuspenseQuery(home);
 
   const breakpointColumnsObj = {
     default: 3,
@@ -22,13 +23,13 @@ export default function PageClient({ isMobile }: PageClientProps) {
     500: 1,
   };
 
-  const imagesSorted = data.data[0].gallery_item?.filter(
-    (image) => image.order
-  );
+  // const imagesSorted = data.data[0].photos?.filter(
+  //   (image) => image.
+  // );
 
-  const imagesUnSorted = data.data[0].gallery_item?.filter(
-    (image) => !image.order
-  );
+  // const imagesUnSorted = data.data[0].photos?.filter(
+  //   (image) => !image.
+  // );
 
   const ImageComponent = ({ image, index }: { image: any; index: number }) => (
     <div key={`image${image.id}`} className="mb-4">
@@ -80,12 +81,12 @@ export default function PageClient({ isMobile }: PageClientProps) {
           className="my-8 w-full"
         /> */}
 
-          {imagesSorted
+          {/* {imagesSorted
             .sort((a, b) => a.order - b.order)
             .map((image, idx) => (
               <ImageComponent key={image.id} image={image} index={idx} />
-            ))}
-          {imagesUnSorted.map((image, idx) => (
+            ))} */}
+          {data.data[0]?.photos.map((image, idx) => (
             <ImageComponent key={image.id} image={image} index={idx} />
           ))}
         </Masonry>
@@ -102,12 +103,12 @@ export default function PageClient({ isMobile }: PageClientProps) {
             alt="Ratings"
             className="my-8 w-full"
           /> */}
-          {imagesSorted
+          {/* {imagesSorted
             .sort((a, b) => a.order - b.order)
             .map((image, idx) => (
               <ImageComponent key={image.id} image={image} index={idx} />
-            ))}
-          {imagesUnSorted.map((image, idx) => (
+            ))} */}
+          {data.data[0]?.photos.map((image, idx) => (
             <ImageComponent key={image.id} image={image} index={idx} />
           ))}
         </Masonry>

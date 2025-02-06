@@ -4,6 +4,7 @@ import { homeOptions } from "@/lib/api/home";
 import { getQueryClient } from "./get-query-client";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { Metadata } from "next";
+import { home } from "@/lib/api/categories";
 
 export const metadata: Metadata = {
   title:
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const queryClient = getQueryClient();
-  await queryClient.prefetchQuery(homeOptions);
+  await queryClient.prefetchQuery(home);
 
   const headersList = headers();
   const userAgent = (await headersList).get("user-agent") || "";

@@ -2,6 +2,17 @@ import { Root } from "../types";
 import { axiosInstance } from "./instance";
 import { queryOptions } from "@tanstack/react-query";
 
+export const home = queryOptions({
+  queryKey: ["family-portrait"],
+  queryFn: async () => {
+    const response = await axiosInstance.get<Root>(
+      `/categories?populate[photos][populate]=*&populate[blogs][populate]=*&filters[name][$eq]=home`
+    );
+
+    return response.data;
+  },
+});
+
 export const family = queryOptions({
   queryKey: ["family-portrait"],
   queryFn: async () => {
