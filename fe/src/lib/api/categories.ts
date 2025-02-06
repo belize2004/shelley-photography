@@ -3,7 +3,7 @@ import { axiosInstance } from "./instance";
 import { queryOptions } from "@tanstack/react-query";
 
 export const home = queryOptions({
-  queryKey: ["family-portrait"],
+  queryKey: ["home-1"],
   queryFn: async () => {
     const response = await axiosInstance.get<Root>(
       `/categories?populate[photos][populate]=*&populate[blogs][populate]=*&filters[name][$eq]=home`

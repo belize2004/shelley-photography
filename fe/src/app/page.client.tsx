@@ -87,7 +87,17 @@ export default function PageClient({ isMobile }: PageClientProps) {
               <ImageComponent key={image.id} image={image} index={idx} />
             ))} */}
           {data.data[0]?.photos.map((image, idx) => (
-            <ImageComponent key={image.id} image={image} index={idx} />
+            <div key={image.id} className="mb-4">
+              {" "}
+              {/* Changed margin to bottom only */}
+              <Image
+                src={IMAGE_BASE_URL + image.url || "/placeholder.svg"}
+                width={image.width || 1200}
+                height={image.height || 120}
+                alt="Image"
+                className="rounded-xl w-full h-auto" // Made image responsive
+              />
+            </div>
           ))}
         </Masonry>
       ) : (
@@ -109,7 +119,17 @@ export default function PageClient({ isMobile }: PageClientProps) {
               <ImageComponent key={image.id} image={image} index={idx} />
             ))} */}
           {data.data[0]?.photos.map((image, idx) => (
-            <ImageComponent key={image.id} image={image} index={idx} />
+            <div key={image.id} className="mb-4">
+              {" "}
+              {/* Changed margin to bottom only */}
+              <Image
+                src={IMAGE_BASE_URL + image.url || "/placeholder.svg"}
+                width={image.width || 1200}
+                height={image.height || 120}
+                alt="Image"
+                className="rounded-xl w-full h-auto" // Made image responsive
+              />
+            </div>
           ))}
         </Masonry>
       )}
