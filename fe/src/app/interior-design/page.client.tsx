@@ -131,7 +131,7 @@ export default function PageClient({ isMobile }: PageClientProps) {
             Schedule your session today.
           </div>
           <div className="font-bold">
-            Starting at $400
+            Starting at $800
           </div>
         </div>
       </div>
