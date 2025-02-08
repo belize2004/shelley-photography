@@ -60,7 +60,7 @@ export function Navbar() {
           className="text-lg bg-[#3898ec] font-bold w-fit mt-4 md:mt-0 mx-auto z-10"
           asChild
         >
-          <Link href="https://m.me/shelleyandblaine">
+          <Link href="https://m.me/shelleyandblainephotography">
             Chat with me
           </Link>
         </Button>
