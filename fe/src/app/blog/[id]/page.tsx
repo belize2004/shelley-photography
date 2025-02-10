@@ -30,15 +30,19 @@ export default async function Page({ params }: Props) {
           Published on {format(new Date(postData.publishedAt), "MMMM d, yyyy")}
         </p>
       </header>
-
-      <Image
-        src={IMAGE_BASE_URL + postData.cover.url}
-        width={postData.cover.width}
-        height={postData.cover.height}
-        alt={postData.cover.alternativeText || ""}
-        className="w-full h-auto rounded-lg mb-8"
-        priority
-      />
+      {
+        postData.cover && (
+          <div className="mb-8">
+            <Image
+              src={IMAGE_BASE_URL + postData.cover.url}
+              width={postData.cover.width}
+              height={postData.cover.height}
+              alt={postData.cover.alternativeText || "Cover image"}
+              className="w-full h-auto rounded-lg"
+            />
+          </div>
+        )
+      }
 
       <div className="prose prose-lg max-w-none mb-8">
         <p>{postData.desc}</p>
