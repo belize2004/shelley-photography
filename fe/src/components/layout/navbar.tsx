@@ -84,17 +84,19 @@ export function Navbar() {
           items={[
             { name: "Home", href: "/" },
             { name: "Interior design", href: "/interior-design" },
-            { name: "Real estate", href: "/real-estate" },
-            { name: "Short term rental", href: "/short-term-rental" },
-            { name: "Family portrait", href: "/family-portrait" },
+            { name: "real estate", href: "/real-estate" },
+            { name: "short term rental", href: "/short-term-rental" },
+            { name: "family portrait", href: "/family-portrait" },
+            { name: "family portrait", href: "/blog/wehji44j4ibayyd92n2e0j1c" },
             { name: "Engagement Sessions", href: "/engagement-sessions" },
             { name: "Senior Portraits", href: "/senior-portraits" },
             { name: "Micro Wedding", href: "/micro-wedding" },
+
             // { name: "WALL ART BY SHELLEY", href: "/wall-art" },
             // { name: "Website Design Service", href: "/website-design-service" },
-            { name: "Contact", href: "/contact" },
-            { name: "About", href: "/about" },
-            { name: "In the press", href: "/press" },
+            { name: "contact", href: "/contact" },
+            { name: "about", href: "/about" },
+            { name: "in the press", href: "/press" },
             { name: "Blog", href: "/blog" },
           ]}
         />

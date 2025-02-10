@@ -42,9 +42,11 @@ export function Sidebar() {
           { name: "real estate", href: "/real-estate" },
           { name: "short term rental", href: "/short-term-rental" },
           { name: "family portrait", href: "/family-portrait" },
+          { name: "family portrait", href: "/blog/wehji44j4ibayyd92n2e0j1c" },
           { name: "Engagement Sessions", href: "/engagement-sessions" },
           { name: "Senior Portraits", href: "/senior-portraits" },
           { name: "Micro Wedding", href: "/micro-wedding" },
+
           // { name: "WALL ART BY SHELLEY", href: "/wall-art" },
           // { name: "Website Design Service", href: "/website-design-service" },
           { name: "contact", href: "/contact" },
