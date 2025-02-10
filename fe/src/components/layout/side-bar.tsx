@@ -42,7 +42,7 @@ export function Sidebar() {
           { name: "real estate", href: "/real-estate" },
           { name: "short term rental", href: "/short-term-rental" },
           { name: "family portrait", href: "/family-portrait" },
-          { name: "family portrait", href: "/blog/wehji44j4ibayyd92n2e0j1c" },
+          { name: "family portrait pricing", href: "/blog/wehji44j4ibayyd92n2e0j1c" },
           { name: "Engagement Sessions", href: "/engagement-sessions" },
           { name: "Senior Portraits", href: "/senior-portraits" },
           { name: "Micro Wedding", href: "/micro-wedding" },
