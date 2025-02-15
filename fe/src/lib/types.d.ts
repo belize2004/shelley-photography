@@ -15,6 +15,7 @@ export interface Daum {
 }
 
 export interface Photo {
+  [x: string]: string;
   id: number;
   documentId: string;
   name: string;

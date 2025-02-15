@@ -1,30 +1,38 @@
 import { headers } from "next/headers";
-import PageClient from "./page.client";
-import { homeOptions } from "@/lib/api/home";
+import { Suspense } from "react";
+import { Metadata } from "next";
 import { getQueryClient } from "./get-query-client";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import { Metadata } from "next";
 import { home } from "@/lib/api/categories";
+import { Gallery } from "@/components/gallery";
+import { BlogList } from "@/components/blog/blog-list";
+import { LoadingGallery } from "@/components/gallery.loading";
 
 export const metadata: Metadata = {
-  title:
-    "Shelley Bressman Photography | Pensacola and Gulf Shores Photographer",
-  description:
-    "Discover Shelley Bressman’s professional photography in Pensacola, FL, specializing in real estate, interior design, portraits, and concert events with artistic flair.",
+  title: "Shelley Bressman Photography | Pensacola and Gulf Shores Photographer",
+  description: "Discover Shelley Bressman's professional photography in Pensacola, FL, specializing in real estate, interior design, portraits, and concert events with artistic flair.",
+  metadataBase: new URL('https://shelleybressman.com'),
 };
+
+export const revalidate = 3600; // Revalidate every hour
 
 export default async function Home() {
   const queryClient = getQueryClient();
   await queryClient.prefetchQuery(home);
 
-  const headersList = headers();
-  const userAgent = (await headersList).get("user-agent") || "";
+  const headersList = await headers();
+  const userAgent = headersList.get("user-agent") || "";
   const isMobile = /mobile/i.test(userAgent);
 
   return (
-    <div className="p-4">
+    <div className="max-w-[2000px] mx-auto">
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <PageClient isMobile={isMobile} />
+        <Suspense fallback={<LoadingGallery />}>
+          <Gallery isMobile={isMobile} />
+        </Suspense>
+        <Suspense fallback={<div className="animate-pulse h-96" />}>
+          <BlogList />
+        </Suspense>
       </HydrationBoundary>
     </div>
   );
