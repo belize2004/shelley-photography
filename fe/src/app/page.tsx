@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://shelleybressman.com'),
 };
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
 
 export default async function Home() {
   const queryClient = getQueryClient();

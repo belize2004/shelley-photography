@@ -19,14 +19,9 @@ export function Gallery({ isMobile }: GalleryProps) {
       isMobile
         ? {
           default: 2,
-          500: 2,
         }
         : {
           default: 4,
-          1440: 3,
-          1100: 3,
-          700: 2,
-          500: 1,
         },
     [isMobile]
   );
@@ -49,7 +44,7 @@ export function Gallery({ isMobile }: GalleryProps) {
             loading={index < 4 ? "eager" : "lazy"}
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-          // sizes="(max-width: 500px) 100vw, (max-width: 1100px) 50vw, 33vw"
+            sizes="(max-width: 500px) 100vw, (max-width: 1100px) 50vw, 33vw"
           />
         </div>
       } />
