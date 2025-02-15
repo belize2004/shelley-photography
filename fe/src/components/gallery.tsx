@@ -20,7 +20,7 @@ export function Gallery({ isMobile }: GalleryProps) {
       isMobile
         ? {
           default: 2,
-          500: 1,
+          500: 2,
         }
         : {
           default: 4,
@@ -38,7 +38,7 @@ export function Gallery({ isMobile }: GalleryProps) {
     <Masonry
       breakpointCols={breakpointCols}
       className="flex w-auto"
-      columnClassName="bg-clip-padding px-2 first:pl-4 last:pr-4"
+      columnClassName="bg-clip-padding px-2 first:pl-4 last:pr-4 py-4"
     >
       {photos.map((image, idx) => (
         <div key={image.id} className="mb-4 relative group">
