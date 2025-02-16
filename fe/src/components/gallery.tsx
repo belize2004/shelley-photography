@@ -21,7 +21,7 @@ export function Gallery({ isMobile }: GalleryProps) {
           default: 2,
         }
         : {
-          default: 4,
+          default: 3,
         },
     [isMobile]
   );
