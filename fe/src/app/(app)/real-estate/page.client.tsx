@@ -1,20 +1,22 @@
 'use client'
 
 import {BlogCard} from '@/components/blog/card'
-import {reale} from '@/lib/api/categories'
-import {IMAGE_BASE_URL} from '@/lib/const'
+// import {reale} from '@/lib/api/categories'
+// import {IMAGE_BASE_URL} from '@/lib/const'
+import {generalImageURL} from '@/lib/utils'
 
-import {useSuspenseQuery} from '@tanstack/react-query'
+// import {useSuspenseQuery} from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 import Masonry from 'react-masonry-css'
 
 interface PageClientProps {
   isMobile: boolean
+  realEstates?: any
 }
 
-export default function PageClient({isMobile}: PageClientProps) {
-  const {data} = useSuspenseQuery(reale)
+export default function PageClient({isMobile, realEstates = null}: PageClientProps) {
+  // const {data} = useSuspenseQuery(reale)
 
   const breakpointColumnsObj = {
     default: 3,
@@ -22,6 +24,25 @@ export default function PageClient({isMobile}: PageClientProps) {
     1100: 3,
     700: 2,
     500: 1
+  }
+  const renderImages = () => {
+    return realEstates?.photos?.map((image, idx) => {
+      const imgUrl = generalImageURL(image)
+      const dimension = image?.asset?._ref?.split('-')[2]
+      const width = dimension ? dimension.split('x')[0] : 1200
+      const height = dimension ? dimension.split('x')[1] : 120
+      return (
+        <div key={image?._key} className="mb-4">
+          <Image
+            src={imgUrl || '/placeholder.svg'}
+            width={width || 1200}
+            height={height || 120}
+            alt="Image"
+            className="rounded-xl w-full h-auto" // Made image responsive
+          />
+        </div>
+      )
+    })
   }
 
   return (
@@ -35,25 +56,7 @@ export default function PageClient({isMobile}: PageClientProps) {
           className="flex w-auto"
           columnClassName="bg-clip-padding px-2"
         >
-          {/* <Image
-       src="/ratings.webp"
-       width={2000}
-       height={2000}
-       alt="Ratings"
-       className="my-8 w-full"
-     /> */}
-
-          {data.data[0]?.photos?.map((image, idx) => (
-            <div key={image.id} className="mb-4">
-              <Image
-                src={IMAGE_BASE_URL + image.url || '/placeholder.svg'}
-                width={image.width || 1200}
-                height={image.height || 120}
-                alt="Image"
-                className="rounded-xl w-full h-auto" // Made image responsive
-              />
-            </div>
-          ))}
+          {renderImages()}
         </Masonry>
       ) : (
         <Masonry
@@ -61,26 +64,7 @@ export default function PageClient({isMobile}: PageClientProps) {
           className="flex w-auto"
           columnClassName="bg-clip-padding px-2"
         >
-          {/* <Image
-            src="/ratings.webp"
-            width={2000}
-            height={2000}
-            alt="Ratings"
-            className="my-8 w-full"
-          /> */}
-
-          {data.data[0]?.photos?.map((image, idx) => (
-            <div key={image.id} className="mb-4">
-              {/* Changed margin to bottom only */}
-              <Image
-                src={IMAGE_BASE_URL + image.url || '/placeholder.svg'}
-                width={image.width || 1200}
-                height={image.height || 120}
-                alt="Image"
-                className="rounded-xl w-full h-auto" // Made image responsive
-              />
-            </div>
-          ))}
+          {renderImages()}
         </Masonry>
       )}
 
@@ -146,9 +130,7 @@ export default function PageClient({isMobile}: PageClientProps) {
       </div>
 
       <div className="flex flex-col p-8 gap-8">
-        {data?.data
-          .filter((c) => c.name === 'real estate')
-          .map((category) => category.blogs.map((b) => <BlogCard key={b.id} blogPost={b} />))}
+        {realEstates?.blogs?.map((b) => <BlogCard key={b._id} blogPost={b} />)}
       </div>
     </>
   )

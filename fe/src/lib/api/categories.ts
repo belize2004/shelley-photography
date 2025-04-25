@@ -40,6 +40,30 @@ export async function getShortTermRental() {
     return []
   }
 }
+export async function getRealEstate() {
+  try {
+    const realEstates = await client.fetch(
+      '*[_type == "category" && name == "real-estate"][0]',
+      {},
+      {next: {revalidate: 600}}
+    )
+    return realEstates
+  } catch (error) {
+    return []
+  }
+}
+export async function getInteriorDesign() {
+  try {
+    const interiorDesigns = await client.fetch(
+      '*[_type == "category" && name == "interior-design"][0]',
+      {},
+      {next: {revalidate: 600}}
+    )
+    return interiorDesigns
+  } catch (error) {
+    return []
+  }
+}
 
 export const family = queryOptions({
   queryKey: ['family-portrait'],
