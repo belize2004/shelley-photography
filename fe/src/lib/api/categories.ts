@@ -1,102 +1,117 @@
-import { Root } from "../types";
-import { axiosInstance } from "./instance";
-import { queryOptions } from "@tanstack/react-query";
+import {client} from '@/sanity/lib/client'
+import {Root} from '../types'
+import {axiosInstance} from './instance'
+import {queryOptions} from '@tanstack/react-query'
 
 export const home = queryOptions({
-  queryKey: ["home-1"],
+  queryKey: ['home-1'],
   queryFn: async () => {
     const response = await axiosInstance.get<Root>(
       `/categories?populate[photos][populate]=*&populate[blogs][populate]=*&filters[name][$eq]=home`
-    );
+    )
 
-    return response.data;
-  },
-});
+    return response.data
+  }
+})
+
+export async function getHomeData() {
+  try {
+    const homeData = await client.fetch(
+      `*[_type == "category" && name == "home"][0]`,
+      {},
+      {next: {revalidate: 600}}
+    )
+
+    return homeData
+  } catch (error) {
+    return []
+  }
+}
 
 export const family = queryOptions({
-  queryKey: ["family-portrait"],
+  queryKey: ['family-portrait'],
   queryFn: async () => {
     const response = await axiosInstance.get<Root>(
       `/categories?populate[photos][populate]=*&populate[blogs][populate]=*&filters[name][$eq]=family-portrait`
-    );
+    )
 
-    return response.data;
-  },
-});
+    return response.data
+  }
+})
 
 export const inte = queryOptions({
-  queryKey: ["interior-design"],
+  queryKey: ['interior-design'],
   queryFn: async () => {
     const response = await axiosInstance.get<Root>(
       `/categories?populate[photos][populate]=*&populate[blogs][populate]=*&filters[name][$eq]=interior-design`
-    );
+    )
 
-    return response.data;
-  },
-});
+    return response.data
+  }
+})
 
 export const reale = queryOptions({
-  queryKey: ["real-estate"],
+  queryKey: ['real-estate'],
   queryFn: async () => {
     const response = await axiosInstance.get<Root>(
       `/categories?populate[photos][populate]=*&populate[blogs][populate]=*&filters[name][$eq]=real-estate`
-    );
+    )
 
-    return response.data;
-  },
-});
+    return response.data
+  }
+})
 
 export const sh = queryOptions({
-  queryKey: ["short"],
+  queryKey: ['short'],
   queryFn: async () => {
     const response = await axiosInstance.get<Root>(
       `/categories?populate[photos][populate]=*&populate[blogs][populate]=*&filters[name][$eq]=short-term-rental`
-    );
+    )
 
-    return response.data;
-  },
-});
+    return response.data
+  }
+})
 
 export const engage = queryOptions({
-  queryKey: ["engagement"],
+  queryKey: ['engagement'],
   queryFn: async () => {
     const response = await axiosInstance.get<Root>(
       `/categories?populate[photos][populate]=*&populate[blogs][populate]=*&filters[name][$eq]=engagement-sessions`
-    );
+    )
 
-    return response.data;
-  },
-});
+    return response.data
+  }
+})
 
 export const senior = queryOptions({
-  queryKey: ["senior-portrait"],
+  queryKey: ['senior-portrait'],
   queryFn: async () => {
     const response = await axiosInstance.get<Root>(
       `/categories?populate[photos][populate]=*&populate[blogs][populate]=*&filters[name][$eq]=senior-portraits`
-    );
+    )
 
-    return response.data;
-  },
-});
+    return response.data
+  }
+})
 
 export const micro = queryOptions({
-  queryKey: ["micro"],
+  queryKey: ['micro'],
   queryFn: async () => {
     const response = await axiosInstance.get<Root>(
       `/categories?populate[photos][populate]=*&populate[blogs][populate]=*&filters[name][$eq]=micro-wedding`
-    );
+    )
 
-    return response.data;
-  },
-});
+    return response.data
+  }
+})
 
 export const wall = queryOptions({
-  queryKey: ["wall"],
+  queryKey: ['wall'],
   queryFn: async () => {
     const response = await axiosInstance.get<Root>(
       `/categories?populate[photos][populate]=*&populate[blogs][populate]=*&filters[name][$eq]=wall-art-by-shelley`
-    );
+    )
 
-    return response.data;
-  },
-});
+    return response.data
+  }
+})

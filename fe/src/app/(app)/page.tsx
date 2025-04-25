@@ -1,9 +1,9 @@
 import {headers} from 'next/headers'
 import {Suspense} from 'react'
 import {Metadata} from 'next'
-import {getQueryClient} from '../get-query-client'
-import {dehydrate, HydrationBoundary} from '@tanstack/react-query'
-import {home} from '@/lib/api/categories'
+// import {getQueryClient} from '../get-query-client'
+// import {dehydrate, HydrationBoundary} from '@tanstack/react-query'
+import {getHomeData, home} from '@/lib/api/categories'
 import {Gallery} from '@/components/gallery'
 import {BlogList} from '@/components/blog/blog-list'
 import {LoadingGallery} from '@/components/gallery.loading'
@@ -18,8 +18,10 @@ export const metadata: Metadata = {
 export const revalidate = 3600
 
 export default async function Home() {
-  const queryClient = getQueryClient()
-  await queryClient.prefetchQuery(home)
+  // const queryClient = getQueryClient()
+  const homeData = await getHomeData()
+
+  // await queryClient.prefetchQuery(home)
 
   const headersList = await headers()
   const userAgent = headersList.get('user-agent') || ''
@@ -27,14 +29,14 @@ export default async function Home() {
 
   return (
     <div className="max-w-[2000px] mx-auto">
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <Suspense fallback={<LoadingGallery />}>
-          <Gallery isMobile={isMobile} />
-        </Suspense>
-        <Suspense fallback={<div className="animate-pulse h-96" />}>
-          <BlogList />
-        </Suspense>
-      </HydrationBoundary>
+      {/* <HydrationBoundary state={dehydrate(queryClient)}> */}
+      <Suspense fallback={<LoadingGallery />}>
+        <Gallery isMobile={isMobile} homeData={homeData} />
+      </Suspense>
+      <Suspense fallback={<div className="animate-pulse h-96" />}>
+        <BlogList />
+      </Suspense>
+      {/* </HydrationBoundary> */}
     </div>
   )
 }
