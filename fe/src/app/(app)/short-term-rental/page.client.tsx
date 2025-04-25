@@ -1,105 +1,50 @@
 'use client'
 
 import {BlogCard} from '@/components/blog/card'
-import {sh} from '@/lib/api/categories'
+// import {sh} from '@/lib/api/categories'
 
-import {IMAGE_BASE_URL} from '@/lib/const'
-import {client} from '@/sanity/lib/client'
+// import {IMAGE_BASE_URL} from '@/lib/const'
+import {generalImageURL} from '@/lib/utils'
 
-import {useSuspenseQuery} from '@tanstack/react-query'
-import axios from 'axios'
+// import {useSuspenseQuery} from '@tanstack/react-query'
+
 import Image from 'next/image'
-import {useEffect} from 'react'
 import Masonry from 'react-masonry-css'
 
 interface PageClientProps {
   isMobile: boolean
+  shortTermRental?: any
 }
 
-export default function PageClient({isMobile}: PageClientProps) {
-  const {data} = useSuspenseQuery(sh)
+export default function PageClient({isMobile, shortTermRental = null}: PageClientProps) {
+  // const {data} = useSuspenseQuery(sh)
 
-  async function uploadImageToSanity(imageUrl: string) {
-    try {
-      // Download the image from Strapi
-      const response = await axios.get(`https://cms.shelleyandblaine.com${imageUrl}`, {
-        responseType: 'arraybuffer'
-      })
-
-      const buffer = Buffer.from(response?.data)
-
-      // Upload to Sanity
-      const asset = await client.assets.upload('image', buffer, {
-        filename: imageUrl.split('/').pop() // Extracts filename from URL
-      })
-
-      if (asset) {
-        return {
-          _type: 'image',
-          asset: {
-            _type: 'reference',
-            _ref: asset?._id
-          }
-        }
-      }
-      return null
-    } catch (error) {
-      console.error('Error uploading image:', error)
-      return null
-    }
-  }
-
-  // Main migration function
-  async function migrateGallery() {
-    const category = data?.data[0]
-    const photos = category?.photos
-    const length = photos?.length
-    const uploadedPhotos = []
-
-    for (let i = 0; i < length; i++) {
-      const photo = photos[i]
-      const imageAsset = await uploadImageToSanity(photo?.url)
-
-      if (imageAsset?.asset?._ref) {
-        uploadedPhotos.push({
-          _type: 'photo',
-          _key: imageAsset?.asset?._ref,
-          title: photo?.name,
-          alt: photo?.alternativeText,
-          asset: {
-            _type: 'reference',
-            _ref: imageAsset.asset._ref
-          }
-        })
-      }
-    }
-
-    // Create the home document in Sanity
-    try {
-      const result = await client.create({
-        _type: 'category',
-        name: category?.name,
-        // blog: category.blogs,
-        photos: uploadedPhotos
-      })
-      console.log('Successfully migrated home page with gallery:', result?._id)
-    } catch (error) {
-      console.log('Error creating home document:', error)
-    }
-  }
-
-  // Run the migration
-  useEffect(() => {
-    ;(async () => {
-      migrateGallery().catch(console.error)
-    })()
-  }, [])
   const breakpointColumnsObj = {
     default: 3,
     1440: 4,
     1100: 3,
     700: 2,
     500: 1
+  }
+
+  const renderImages = () => {
+    return shortTermRental?.photos?.map((image, idx) => {
+      const imgUrl = generalImageURL(image)
+      const dimension = image?.asset?._ref?.split('-')[2]
+      const width = dimension ? dimension.split('x')[0] : 1200
+      const height = dimension ? dimension.split('x')[1] : 120
+      return (
+        <div key={image?._key} className="mb-4">
+          <Image
+            src={imgUrl || '/placeholder.svg'}
+            width={width || 1200}
+            height={height || 120}
+            alt="Image"
+            className="rounded-xl w-full h-auto" // Made image responsive
+          />
+        </div>
+      )
+    })
   }
 
   return (
@@ -113,25 +58,7 @@ export default function PageClient({isMobile}: PageClientProps) {
           className="flex w-auto"
           columnClassName="bg-clip-padding px-2"
         >
-          {/* <Image
-       src="/ratings.webp"
-       width={2000}
-       height={2000}
-       alt="Ratings"
-       className="my-8 w-full"
-     /> */}
-
-          {data.data[0]?.photos?.map((image, idx) => (
-            <div key={image.id} className="mb-4">
-              <Image
-                src={IMAGE_BASE_URL + image.url || '/placeholder.svg'}
-                width={image.width || 1200}
-                height={image.height || 120}
-                alt="Image"
-                className="rounded-xl w-full h-auto" // Made image responsive
-              />
-            </div>
-          ))}
+          {renderImages()}
         </Masonry>
       ) : (
         <Masonry
@@ -139,27 +66,7 @@ export default function PageClient({isMobile}: PageClientProps) {
           className="flex w-auto"
           columnClassName="bg-clip-padding px-2"
         >
-          {/* <Image
-            src="/ratings.webp"
-            width={2000}
-            height={2000}
-            alt="Ratings"
-            className="my-8 w-full"
-          /> */}
-
-          {data.data[0]?.photos?.map((image, idx) => (
-            <div key={image.id} className="mb-4">
-              {' '}
-              {/* Changed margin to bottom only */}
-              <Image
-                src={IMAGE_BASE_URL + image.url || '/placeholder.svg'}
-                width={image.width || 1200}
-                height={image.height || 120}
-                alt="Image"
-                className="rounded-xl w-full h-auto" // Made image responsive
-              />
-            </div>
-          ))}
+          {renderImages()}
         </Masonry>
       )}
 
@@ -295,9 +202,7 @@ export default function PageClient({isMobile}: PageClientProps) {
       </div>
 
       <div className="flex flex-col p-8 gap-8">
-        {data.data[0].blogs.map((b) => (
-          <BlogCard key={b.id} blogPost={b} />
-        ))}
+        {shortTermRental?.blogs?.map((b) => <BlogCard key={b._id} blogPost={b} />)}
       </div>
     </>
   )
