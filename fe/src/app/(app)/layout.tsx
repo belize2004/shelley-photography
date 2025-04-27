@@ -26,13 +26,15 @@ export default function RootLayout({
       <Providers>
         <CSPostHogProvider>
           <body
-            className={`${mont.className} antialiased bg-[#e1dcd8] flex h-screen max-h-screen  lg:overflow-hidden flex-col lg:flex-row`}
+            className={`${mont.className} antialiased bg-[#e1dcd8] flex h-screen max-h-screen  lg:overflow-hidden flex-col md:flex-row`}
           >
-            <aside className="lg:flex-grow-0 bg-white lg:h-screen ">
+            <aside className="md:w-1/4 w-full bg-white md:relative fixed max-h-[117.75px] md:h-screen md:max-h-screen overflow-y-auto z-50">
               <Sidebar />
               <Navbar />
             </aside>
-            <main className="grow h-screen lg:overflow-y-scroll flex-1">{children}</main>
+            <main className="grow md:w-3/4 md:h-screen md:pt-0 pt-[92px] w-full md:overflow-y-scroll ">
+              {children}
+            </main>
           </body>
         </CSPostHogProvider>
       </Providers>
